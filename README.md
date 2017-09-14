@@ -5,3 +5,5 @@ Welcome to the repository of **Cassandra Konecny**. I am a first year MSc studen
 
 ![](http://diveubc.com/wp-content/uploads/2014/04/Cass.jpg)
 
+
+> "Every time I slip into the ocean, it's like going home."  - Sylvia Earle 
