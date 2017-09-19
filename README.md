@@ -7,3 +7,12 @@ Welcome to the repository of **Cassandra Konecny**. I am a first year MSc studen
 
 
 > "Every time I slip into the ocean, it's like going home."  - Sylvia Earle 
+
+**Process and Documentation**
+* I created a public repository on GitHub and initiated the readme file 
+* I originally edited the read me file on GitHub and added in my introduction text.
+* I then used R studio to create a new project and make a copy of the repo on my local machine.
+* I then made a series of modifications (added links, bold text, a quote and an image) by opening the readme .md file in RStudio. I used * the suggested workflow of pulling from GitHub, making changes, saving the changes, Committing the changes and then pushing them each time.
+* I originally also added the homework link but then deleted it on GitHub as I decided to include it in the issue instead.
+
+Overall, I feel like I now have a better understanding of the workflow outlined and how each step contributes to a better experience! It was a useful exercise to review working both on GitHub and locally.
