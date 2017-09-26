@@ -3,48 +3,54 @@ title: "hw_02_gapminder_dplyr"
 author: "Cassandra"
 date: '2017-09-26'
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
   word_document: default
 ---
 
 # Bring rectangular data in
-## Install and load required packages
+* Install and load required packages
 ```{r}
 library(gapminder)
 library(tidyverse)
+library(dplyr)
 ```
 
 
 # Smell test the data
-## Is it a data.frame, a matrix, a vector, a list?
+* Is it a data.frame, a matrix, a vector, a list?
+
 A data.frame is a list of vectors
 ```{r}
 data <- gapminder
 typeof(data)
 ```
-## What’s its class?
-The class of the data.frame is 
+* What’s its class?
+
+The class of the data.frame is a table or "tibble".
 ```{r}
 class(data)
 ```
-## How many variables/columns?
+* How many variables/columns?
 There are 6 variables/columns in the gapminder data set.
 ```{r}
 ncol(data)
 ```
 
-## How many rows/observations?
+* How many rows/observations?
+
 There are 1704 rows/observations in the gapminder data set.
 
 ```{r}
 nrow(data)
 ```
-## Can you get these facts about “extent” or “size” in more than one way? Can you imagine different functions being useful in different contexts?
+* Can you get these facts about “extent” or “size” in more than one way? Can you imagine different functions being useful in different contexts?
+
 Get dimmensions of the data set using dim(). This would be good if we want a really quick overview of the size of the dataset
 ```{r}
 dim(data)
 ```
+
 Get length of object - in this case the length of the list of vectors (rows). This would be useful if we only wanted to know the number of rows (similar function to the nrow() function)
 ```{r}
 
@@ -54,8 +60,9 @@ Get the names of the columns - we can see that there are 6 in total. This is use
 ```{r}
 names(data)
 ```
-## What data type is each variable?
-Use the typeof() function to find the data type of each variable. We can use the column names given above
+* What data type is each variable?
+
+Use the typeof() function to find the data type of each variable. We can use the column names given above ...
 
 country:
 ```{r}
@@ -81,5 +88,71 @@ gdpPercap:
 ```{r}
 typeof(data$gdpPercap)
 ```
+
+# Explore individual variables
+* Pick at least one categorical variable and at least one quantitative variable to explore.
+I chose to use the variables **"continent"** and **gdpPercap**
+* What are possible values (or range, whichever is appropriate) of each variable?
+* What values are typical? What’s the spread? What’s the distribution? Etc., tailored to the variable at hand. Feel free to use summary stats, tables, figures. We’re NOT expecting high production value (yet).
+
+The possible values and frequency of each value for continent are shown in the summary output. In addition there is a plot with the frequency of each value of continent.
+
+```{r}
+summary(data$continent)
+ggplot(data.frame(data$continent), aes(x=data$continent)) + xlab("Continent") + ylab("Frequency") +
+  geom_bar()
+```
+
+The summary function shows that the minimum gdpPercap is 241.2 and the maximum is 113500.0. The mean is 7215.0. The histogram shows the distribution of values. Values under 10000 seem to be the most common.
+```{r}
+summary(data$gdpPercap)
+hist(data$gdpPercap)
+
+```
+
+# Explore various plot types
+
+```{r}
+ggplot(gapminder, aes(gdpPercap, lifeExp, colour=continent)) + geom_point() + scale_x_log10()
+```
+
+```{r}
+filter(gapminder,
+       ((continent == "Americas") & year %in% 1950:2000)|
+           ((continent == "Europe") & year %in% 1950:2000)) %>%
+select(year, gdpPercap,country,continent) %>%
+ggplot(aes(year, gdpPercap, group=country, colour=continent)) + geom_point() + geom_smooth(se=FALSE, method="loess", span=5)
+```
+
+```{r}
+ggplot(gapminder, aes(year, lifeExp, colour=continent)) + geom_smooth() 
+```
+
+```{r}
+ggplot(gapminder, aes(year, gdpPercap, colour=continent)) + geom_smooth() 
+```
+
+```{r}
+filter(gapminder, year == 1992) %>%
+select (country, continent, gdpPercap) %>%
+ggplot(aes(continent, gdpPercap)) + geom_col()
+```
+# But I want to do more!
+
+```{r}
+filter(gapminder, country == c("Rwanda","Afghanistan"))
+```
+
+Perhaps the first code filters through the dataset by comparing each row in the dataset to one item in the list. This would mean that everysecond row in the Afghanistan data, for example, would be compared to Rwanda and therefore it would be FALSE. The same would apply for Rwanda.
+
+This could be re-written as the following:
+```{r}
+filter(gapminder, country == "Rwanda" | country == "Afghanistan")
+```
+This selects all rows where the country is equal to Afghanistan OR Rwanda as intended.
+
+That is all of 'the more' that I would like to do!
+
+# Report your process
 
 
