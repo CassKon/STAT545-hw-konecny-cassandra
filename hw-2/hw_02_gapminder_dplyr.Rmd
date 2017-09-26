@@ -109,9 +109,14 @@ hist(data$gdpPercap)
 
 # Explore various plot types
 
+A scatter plot of lifeExp as a function of gdpPercap. The points are coloured by continent and the x axis is a log scale for easier readability.
+
 ```{r}
 ggplot(gapminder, aes(gdpPercap, lifeExp, colour=continent)) + geom_point() + scale_x_log10()
 ```
+
+Here I filtered the data to only get rows where the continent was either 'Americas' or 'Europe' and where the year was betwenn 1950 and 2000. I then selected columns from this filtered dataset and piped that data into ggplot.  I then plotted gdpPercap by year and grouped the points by country. I then coloured the points by continent and added lines through the points using the geom_smooth() line.
+
 
 ```{r}
 filter(gapminder,
@@ -121,6 +126,7 @@ select(year, gdpPercap,country,continent) %>%
 ggplot(aes(year, gdpPercap, group=country, colour=continent)) + geom_point() + geom_smooth(se=FALSE, method="loess", span=5)
 ```
 
+For the next two plots I decided to plot both gdpPercap and lifeExp by year. I grouped the data by continent and coloured the lines by continent as well.
 ```{r}
 ggplot(gapminder, aes(year, lifeExp, colour=continent)) + geom_smooth() 
 ```
@@ -129,11 +135,14 @@ ggplot(gapminder, aes(year, lifeExp, colour=continent)) + geom_smooth()
 ggplot(gapminder, aes(year, gdpPercap, colour=continent)) + geom_smooth() 
 ```
 
+Here Ic reated a bar graph of the gdpPercap for each continent, for the year 1992. I used filter, select, and piping once again to feed the data into ggplot.
+
 ```{r}
 filter(gapminder, year == 1992) %>%
 select (country, continent, gdpPercap) %>%
 ggplot(aes(continent, gdpPercap)) + geom_col()
 ```
+
 # But I want to do more!
 
 ```{r}
