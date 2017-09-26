@@ -1,0 +1,87 @@
+---
+title: "hw_02_gapminder_dplyr"
+author: "Cassandra"
+date: '2017-09-26'
+output:
+  word_document: default
+  pdf_document: default
+  html_document: default
+---
+
+# Bring rectangular data in
+## Install and load required packages
+```{r}
+install.packages("gapminder")
+library(gapminder)
+install.packages("tidyverse")
+library(tidyverse)
+```
+
+
+# Smell test the data
+## Is it a data.frame, a matrix, a vector, a list?
+A data.frame is a list of vectors
+```{r}
+data <- gapminder
+typeof(data)
+```
+## What’s its class?
+The class of the data.frame is 
+```{r}
+class(data)
+```
+## How many variables/columns?
+There are 6 variables/columns in the gapminder data set.
+```{r}
+ncol(data)
+```
+
+## How many rows/observations?
+There are 1704 rows/observations in the gapminder data set.
+
+```{r}
+nrow(data)
+```
+## Can you get these facts about “extent” or “size” in more than one way? Can you imagine different functions being useful in different contexts?
+Get dimmensions of the data set using dim(). This would be good if we want a really quick overview of the size of the dataset
+```{r}
+dim(data)
+```
+Get length of object - in this case the length of the list of vectors (rows). This would be useful if we only wanted to know the number of rows (similar function to the nrow() function)
+```{r}
+
+length(data)
+```
+Get the names of the columns - we can see that there are 6 in total. This is useful if we not only want the number of columns, but also their names.
+```{r}
+names(data)
+```
+## What data type is each variable?
+Use the typeof() function to find the data type of each variable. We can use the column names given above
+
+country:
+```{r}
+typeof(data$country)
+```
+continent:
+```{r}
+typeof(data$continent)
+```
+year:
+```{r}
+typeof(data$year)
+```
+lifeExp:
+```{r}
+typeof(data$lifeExp)
+```
+pop:
+```{r}
+typeof(data$pop)
+```
+gdpPercap:
+```{r}
+typeof(data$gdpPercap)
+```
+
+
