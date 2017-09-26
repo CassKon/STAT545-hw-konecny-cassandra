@@ -3,17 +3,15 @@ title: "hw_02_gapminder_dplyr"
 author: "Cassandra"
 date: '2017-09-26'
 output:
-  word_document: default
   pdf_document: default
   html_document: default
+  word_document: default
 ---
 
 # Bring rectangular data in
 ## Install and load required packages
 ```{r}
-install.packages("gapminder")
 library(gapminder)
-install.packages("tidyverse")
 library(tidyverse)
 ```
 

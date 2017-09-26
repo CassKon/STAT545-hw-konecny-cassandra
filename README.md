@@ -1,5 +1,4 @@
-# STAT545-hw01-konecny-cassandra
-[**Homework 01: Edit README.md and Use R Markdown**](http://stat545.com/hw01_edit-README.html)
+# STAT545-hw-konecny-cassandra
 
 Welcome to the repository of **Cassandra Konecny**. I am a first year MSc student in the department of zoology working with Dr. Christopher Harley. I am interested in how climate change (i.e. how changes in salinity, temperate, pH) influence species interactions and community composition. I am also an avid SCUBA diver and enjoy spending time in the ocean!
 
@@ -8,7 +7,15 @@ Welcome to the repository of **Cassandra Konecny**. I am a first year MSc studen
 
 > "Every time I slip into the ocean, it's like going home."  - Sylvia Earle 
 
-**Process and Documentation**
+## Homework links:
+
+[**Homework 01: Edit README.md and Use R Markdown**](https://github.com/CassKon/STAT545-hw-konecny-cassandra/tree/abe9b9e09d1049258ed481a859144ea36eded3ec/hw-1)
+
+[**Homework 02: Explore Gapminder and use dplyr **](https://github.com/CassKon/STAT545-hw-konecny-cassandra/tree/abe9b9e09d1049258ed481a859144ea36eded3ec/hw-2)
+
+
+## Process and Documentation
+
 * I created a public repository on GitHub and initiated the readme file 
 * I originally edited the read me file on GitHub and added in my introduction text.
 * I then used R studio to create a new project and make a copy of the repo on my local machine.
