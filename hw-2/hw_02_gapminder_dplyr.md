@@ -67,7 +67,9 @@ class(data)
 
     ## [1] "tbl_df"     "tbl"        "data.frame"
 
--   How many variables/columns? There are 6 variables/columns in the gapminder data set.
+-   How many variables/columns?
+
+There are 6 variables/columns in the gapminder data set.
 
 ``` r
 ncol(data)
@@ -166,7 +168,7 @@ typeof(data$gdpPercap)
 Explore individual variables
 ============================
 
--   Pick at least one categorical variable and at least one quantitative variable to explore. I chose to use the variables **"continent"** and **gdpPercap**
+-   Pick at least one categorical variable and at least one quantitative variable to explore. I chose to use the variables **"continent"** and **"gdpPercap"**
 -   What are possible values (or range, whichever is appropriate) of each variable?
 -   What values are typical? What’s the spread? What’s the distribution? Etc., tailored to the variable at hand. Feel free to use summary stats, tables, figures. We’re NOT expecting high production value (yet).
 
@@ -204,11 +206,15 @@ hist(data$gdpPercap)
 Explore various plot types
 ==========================
 
+A scatter plot of lifeExp as a function of gdpPercap. The points are coloured by continent and the x axis is a log scale for easier readability.
+
 ``` r
 ggplot(gapminder, aes(gdpPercap, lifeExp, colour=continent)) + geom_point() + scale_x_log10()
 ```
 
 ![](hw_02_gapminder_dplyr_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-17-1.png)
+
+Here I filtered the data to only get rows where the continent was either 'Americas' or 'Europe' and where the year was betwenn 1950 and 2000. I then selected columns from this filtered dataset and piped that data into ggplot. I then plotted gdpPercap by year and grouped the points by country. I then coloured the points by continent and added lines through the points using the geom\_smooth() line.
 
 ``` r
 filter(gapminder,
@@ -222,8 +228,10 @@ ggplot(aes(year, gdpPercap, group=country, colour=continent)) + geom_point() + g
 
 ![](hw_02_gapminder_dplyr_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-18-1.png)
 
+For the next two plots I decided to plot both gdpPercap and lifeExp by year. I grouped the data by continent and coloured the lines by continent as well.
+
 ``` r
-ggplot(gapminder, aes(year, lifeExp, colour=continent)) + geom_smooth() 
+ggplot(gapminder, aes(year, lifeExp, colour=continent)) + geom_smooth() +theme_minimal()
 ```
 
     ## `geom_smooth()` using method = 'loess'
@@ -238,13 +246,18 @@ ggplot(gapminder, aes(year, gdpPercap, colour=continent)) + geom_smooth()
 
 ![](hw_02_gapminder_dplyr_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-20-1.png)
 
+Here Ic reated a bar graph of the gdpPercap for each continent, for the year 1992. I used filter, select, and piping once again to feed the data into ggplot.
+
 ``` r
 filter(gapminder, year == 1992) %>%
 select (country, continent, gdpPercap) %>%
-ggplot(aes(continent, gdpPercap)) + geom_col()
+ggplot(aes(continent, gdpPercap)) + geom_col() + theme_bw()
 ```
 
-![](hw_02_gapminder_dplyr_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-21-1.png) \# But I want to do more!
+![](hw_02_gapminder_dplyr_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-21-1.png)
+
+But I want to do more!
+======================
 
 ``` r
 filter(gapminder, country == c("Rwanda","Afghanistan"))
@@ -291,7 +304,22 @@ filter(gapminder, country == "Rwanda" | country == "Afghanistan")
 
 This selects all rows where the country is equal to Afghanistan OR Rwanda as intended.
 
-That is all of 'the more' that I would like to do!
+That is all of the 'more' that I would like to do!
 
 Report your process
 ===================
+
+-   Reflect on what was hard/easy It was difficult remembering some of the syntax for ggplot2 and some of the functions that we had used in class. I had to go back to the code from the excercises in order to remember the syntax. The data smelling was fairly straight forward.
+-   problems you solved Most of the problems that I solved throughout the assignment were to do with having the right elements in the right place when creating the plots.
+-   helpful tutorials you read: [Tutorial for bar graph](http://ggplot2.tidyverse.org/reference/geom_bar.html), [Tutorial for ggplot2 themes](https://stackoverflow.com/questions/10861773/remove-grid-background-color-and-top-and-right-borders-from-ggplot2)
+
+-   What things were hard, even though you saw them in class? I found it hard to customize the plots the way that I wanted them to look and group the data by the proper variables.
+-   What was easy(-ish) even though we haven’t done it in class? I found that it was easy to add additional layers on to the plots and change the theme.
+
+Workflow:
+=========
+
+-   I edited my existing homework 01 repo and created sub-folders within it for each weeks homework. I also created a .README file for each new folder and described the contents on that page.
+-   I edied the .README file for the hw-02 folder through RStudio using the project that I created last week
+-   I made a new RMarkdown file for the homework 2 assignment and added content
+-   I then used the recommended workflow of saving changes, pulling from GitHub, commiting changes, and then pushing to GitHub from my local machine
