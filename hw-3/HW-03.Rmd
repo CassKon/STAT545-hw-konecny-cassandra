@@ -2,8 +2,7 @@
 title: "HW03"
 author: "Cassandra"
 date: '2017-10-01'
-output: html_document
-
+output: github_document
 ---
 <style type="text/css">
 .twoC {width: 100%}
