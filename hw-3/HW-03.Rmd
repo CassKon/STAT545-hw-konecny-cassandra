@@ -1,0 +1,171 @@
+---
+title: "HW03"
+author: "Cassandra"
+date: '2017-10-01'
+output: github_document
+---
+<!-- <style type="text/css"> -->
+<!-- .twoC {width: 100%} -->
+<!-- .clearer {clear: both} -->
+<!-- .twoC .table {max-width: 50%; float: right; overflow-y:hidden} -->
+<!-- .twoC img {max-width: 50%; float: left; overflow-y:hidden} -->
+<!-- .oneC {width: 100%; inline-block} -->
+<!-- </style> -->
+
+# Task menu
+## Load Required packages
+```{r}
+suppressMessages(library(gapminder))
+suppressMessages(library(dplyr))
+suppressMessages(library(ggplot2))
+suppressMessages(library(rgdal))
+suppressMessages(library(rgeos))
+suppressMessages(library(maptools))
+suppressMessages(library(mapproj))
+suppressMessages(library(reshape))
+```
+
+
+## Get the maximum and minimum of GDP per capita for all continents.
+
+* I used the summarize function to calculate the max and min GDP per capita for all of the continents in the gapminder dataset. I then used knitr to format the data into a table. I also mapped the data maximum, minimum, and mean in ggplot using [stat_summary](http://ggplot2.tidyverse.org/reference/stat_summary.html).
+
+<div class="twoC">
+```{r results = 'asis'}
+gapminder %>%
+    group_by(continent) %>% 
+    summarize(max_gdpPercap = max(gdpPercap),
+              min_gdpPercap = min(gdpPercap)) %>%
+knitr::kable()
+
+gapminder %>%
+    group_by(continent) %>% 
+ggplot() + 
+  stat_summary(
+    mapping = aes(x = continent, y = gdpPercap),
+    fun.ymin = min,
+    fun.ymax = max,
+    fun.y = mean)+
+    theme_bw() +
+    theme(axis.title = element_text(color="#777777", face="bold", size=12)) + 
+    labs(y = 'Per Capita GDP', x = 'Continent') 
+```
+
+</div>
+
+## Look at the spread of GDP per capita within the continents.
+
+* I created a table to show the minimum, median, mean, variance, standard deviation, maximum and number of observations of GDP per capita for each continent. I also created a plot faceted by continent in order show the distribution of the data visually, seperated by continent. For the x-axis, I decided to use free_x in order to allow the scale to vary by plot. Some continents have a larger range of data while others have a smaller range.
+
+<div class="twoC">
+```{r results = 'asis'}
+gapminder %>% 
+group_by(continent) %>%
+  summarise(Min = min(gdpPercap, na.rm=TRUE),
+                     Median = median(gdpPercap, na.rm=TRUE),
+                     Mean = mean(gdpPercap, na.rm=TRUE),
+                     Var = var(gdpPercap, na.rm=TRUE),
+                     SD = sd(gdpPercap, na.rm=TRUE),
+                     Max = max(gdpPercap, na.rm=TRUE),
+                     N = n()) %>%
+knitr::kable()
+gapminder %>%
+ggplot(aes(gdpPercap)) + 
+  facet_wrap(~ continent,scales="free_x") + 
+  geom_histogram(binwidth=1000) +
+  labs(x = 'Per Capita GDP', y = 'Count') +
+  theme_bw() +
+  theme(axis.title = element_text(color="#777777", face="bold", size=12)) +
+  theme(axis.text.x = element_text(angle = 60, hjust = 1))
+
+```
+</div>
+
+## Compute a trimmed mean of life expectancy for different years. Or a weighted mean, weighting by population. Just try something other than the plain vanilla mean.
+
+* I decided to compute the mean life expectancy weighted by population for each continent. This weighted mean is presented in a table. In addition I included a box plot where the life expectancy weighted by population for each country is plotted by continent. The mean is shown for each continent.
+
+<div class="twoC">
+```{r results = 'asis'}
+gapminder %>%
+group_by(continent) %>% 
+summarize(mean_lifeExp = mean(lifeExp/pop)) %>%
+knitr::kable()
+
+gapminder %>%
+mutate(lifeExp_pop = (lifeExp/pop)) %>%
+ggplot(aes(x=continent, y=lifeExp_pop)) + geom_boxplot(colour="gray10", fill="skyblue") +
+scale_y_log10() +  labs(x = 'Continent', y = 'Life Expectancy (weighted by population)') +
+theme_bw() +
+theme(axis.title = element_text(color="#777777", face="bold", size=12))
+```
+</div>
+
+## How is life expectancy changing over time on different continents?
+
+* I used the summarise function to calculate the mean life expectancy by continent for each year. I then used [cast](https://www.r-statistics.com/2012/01/aggregation-and-restructuring-data-from-r-in-action/) in order to reformat the table in a way that was easier to ready. I also plotted the life expectancy for each country through time faceted by continent. I then added a trend line in order to see the trend of life expectancy through time for each continent.
+
+<div class="twoC">
+```{r}
+gapminder %>%
+group_by(continent, year) %>%
+summarise(mean_lifeExp=mean(lifeExp)) %>%
+cast(continent~year) %>%
+knitr::kable()
+ggplot(gapminder, aes(year, lifeExp)) +
+    labs(x = 'Year', y = 'Life Expectancy') +
+    facet_wrap(~ continent,scales="free_x") +
+    geom_point(colour="#9966CC", alpha=0.2) + geom_smooth(span=2, colour="#666699", se=FALSE)+
+    theme_bw() +
+    theme(axis.title = element_text(color="#777777", face="bold", size=12))
+```
+</div>
+
+## Report the absolute and/or relative abundance of countries with low life expectancy over time by continent: Compute some measure of worldwide life expectancy – you decide – a mean or median or some other quantile or perhaps your current age. Then determine how many countries on each continent have a life expectancy less than this benchmark, for each year.
+
+* I computed the median life expectancy for the entire gapminder dataset. I then used tally() to determine how many countries from each continent fall below this benchmark each year. This is shown in the format of a table. I used cast once again in order to reformat the table with time on the top row of the table. I also greated a bar graph that shows the number of countries below the benchmark in each continent through time.
+
+<div class="twoC">
+```{r results = 'asis'}
+gapminder %>%
+filter(lifeExp<(median(gapminder$lifeExp))) %>%
+group_by(year, continent) %>%
+tally() %>%
+cast(continent~year) %>%
+knitr::kable()
+
+gapminder %>%
+filter(lifeExp<(median(gapminder$lifeExp))) %>%
+group_by(year, continent) %>%
+tally() %>%
+ggplot(aes(x = year, y = n, fill = continent)) + 
+  geom_bar(stat = 'identity', position = 'dodge', alpha = 2/3) +
+  labs(x = 'Year', y = 'Number of countries', fill = 'Continent') +
+  theme_bw() +
+  theme(axis.title = element_text(color="#777777", face="bold", size=12)) +
+  scale_x_continuous(breaks=c(1952,1957,1962,1967,1972,1977,1982,1987,1992,1997,2002,2007))
+```
+</div>
+
+* I decided that I would give [mapping](http://rpsychologist.com/working-with-shapefiles-projections-and-world-maps-in-ggplot) a go in ggplot2 and try to map the mean life expectancy for each country on a world map. This turned out to be quite the endeavour but I learned a lot along the way! I got the world shape file from [here](http://thematicmapping.org/downloads). I then joined the spatial data table with the gapminder dataset and filled the polygons based on the calculated mean life expectancy. I played around with some different map projections and didn't really find one that was good at this scale (there seem to be some known glitches).
+
+<div class="twoC">
+```{r results = 'asis'}
+mle <- gapminder %>%
+  group_by(country) %>%
+  summarize(MeanLifeExpectancy=mean(lifeExp))
+knitr::kable(mle)
+
+gde_15 <- readOGR("/Users/cassandrakonecny/Desktop/TM_WORLD_BORDERS-0.3", layer = "TM_WORLD_BORDERS-0.3")
+gde.df <- fortify(gde_15, region="NAME")
+plotData <- merge(gde.df, mle, by.x = "id", by.y = "country", all = TRUE)
+plotData<-plotData[order(plotData$order), ] 
+ggplot() + geom_polygon(data=plotData, aes(x=long, y=lat, group=group, fill=MeanLifeExpectancy),colour='black') +
+        labs(x = 'Longitude', y = 'Latitude', fill = 'Mean Life Expectancy') +
+        theme_bw() + coord_equal() +
+        theme(axis.title = element_text(color="#777777", face="bold", size=12))
+```
+</div>
+
+# Report your process
+
