@@ -2,15 +2,16 @@
 title: "HW03"
 author: "Cassandra"
 date: '2017-10-01'
-output: github_document
+output: html_document
+
 ---
-<!-- <style type="text/css"> -->
-<!-- .twoC {width: 100%} -->
-<!-- .clearer {clear: both} -->
-<!-- .twoC .table {max-width: 50%; float: right; overflow-y:hidden} -->
-<!-- .twoC img {max-width: 50%; float: left; overflow-y:hidden} -->
-<!-- .oneC {width: 100%; inline-block} -->
-<!-- </style> -->
+<style type="text/css">
+.twoC {width: 100%}
+.clearer {clear: both}
+.twoC .table {max-width: 50%; float: right; overflow-y:hidden}
+.twoC img {max-width: 50%; float: left; overflow-y:hidden}
+.oneC {width: 100%; inline-block}
+</style>
 
 # Task menu
 ## Load Required packages
@@ -169,3 +170,9 @@ ggplot() + geom_polygon(data=plotData, aes(x=long, y=lat, group=group, fill=Mean
 
 # Report your process
 
+* I created the rmd file on my computer locally (in RStudio) and then committed changes/pushed to GitHub. I also made some edits on GitHub such as to the README file.
+* I found that the hardest part of this assignment was actually the work that I created for myself by figuring out how to create the make in ggplot. I spent most of the time trying to figure out how it was using the data and what format the joined tables had to be in. 
+* Another difficult part for me was deciding what to customize and how much to customize on the plots. I find that this process can be endless and so it was important to prioritize what I wanted to modify/change.
+* It also took me a while to figure out that I could use cast to reformat the tables in the format that I wanted them.
+* I tried to figure out how to get the two columns to work but I gave up as I couldn't trouble shoot the CSS properly. Essentially I could get two columns but the formatting was very ugly and difficult to read. I tried multiple tags to the stylesheet to have some of it formatted as one column and some as two columns and adding different div tags throughout but this didnt work. I therefore decided to leave some of it in my work (in hope of feedback to solve my problems)!
+* It definitely was easier this time through to remember the dplyr and ggplot syntax and how to change attributes on the plots!
