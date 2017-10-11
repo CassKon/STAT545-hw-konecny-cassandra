@@ -1,0 +1,163 @@
+---
+title: "HW-04"
+author: "Cassandra"
+date: '2017-10-10'
+output: github_document
+---
+## Load Required packages
+```{r}
+suppressMessages(library(gapminder))
+suppressMessages(library(dplyr))
+suppressMessages(library(ggplot2))
+suppressMessages(library(tidyr))
+suppressMessages(library(reshape))
+suppressMessages(library(weatherData))
+suppressMessages(library(wbstats))
+```
+# General data reshaping and relationship to aggregation
+
+**Problem:** You have data in one “shape” but you wish it were in another. Usually this is because the alternative shape is superior for presenting a table, making a figure, or doing aggregation and statistical analysis.
+
+**Solution:** Reshape your data. For simple reshaping, gather() and spread() from tidyr will suffice. Do the thing that it possible / easier now that your data has a new shape.
+
+**Activity 3**
+Compute some measure of life expectancy (mean? median? min? max?) for all possible combinations of continent and year. Reshape that to have one row per year and one variable for each continent. Or the other way around: one row per continent and one variable per year.
+Use knitr::kable() to make these tables look pretty in your rendered homework.
+Is there a plot that is easier to make with the data in this shape versis the usual form? If so (or you think so), try it! Reflect.
+
+* For this activity I chose to compute the mean life expectancy by continent. I did this using a summarise function and calculating the mean. I then decided to use two different methods to reshape the data. First I used 'cast' from the Reshape2 package. Second I used spread from the tidyr package. As it turns out they work essentially the same way and really only have minor differences in their syntax (seperated by ',' vs '~').
+
+This table was created using cast():
+```{r}
+gapminder %>%
+group_by(continent, year) %>%
+summarise(mean_lifeExp=mean(lifeExp)) %>%
+cast(continent~year) %>%
+knitr::kable()
+```
+
+This table was created using spread():
+```{r}
+gapminder %>%
+group_by(continent, year) %>%
+summarise(mean_lifeExp=mean(lifeExp)) %>%
+spread(year, mean_lifeExp) %>%
+knitr::kable()
+```
+
+I then tried to think of ways that I could plot this data ... and was it ever hard! Why would you want the data this way?! But I tried anyways and here is what I came up with ... So let's say that hypothetically you wanted to make a bar graph of the life expectancy for just one year. You could use the data in this format and plot one of the year columns (1952 in this case) for each continent in a bar graph. You could also just filter the data by year however and obtain the same result as I demonstrated. It ultimately ends up being the same number of lines of code. So as I reflect I think that in this example the reshaped data may only make interpreting the data easier in the format of a table but does not make it easier to plot necessarily.
+
+* This Bar graph was created by reshaping the data:
+```{r}
+gapminder %>%
+group_by(continent, year) %>%
+summarise(mean_lifeExp=mean(lifeExp)) %>%
+spread(year, mean_lifeExp) %>%
+ggplot(aes(continent, `1952`)) +
+    labs(x = 'Continent', y = 'Mean Life Expectancy (Years)') +
+    geom_bar(fill=rgb(0.1,0.4,0.5,0.7), stat="identity") +
+    theme_bw()+
+    theme(axis.title = element_text(color="#777777", face="bold", size=12))
+```
+
+* This Bar graph was created by filtering the data:
+```{r}
+gapminder %>%
+filter(year==1952) %>%
+group_by(continent) %>%
+summarise(mean_lifeExp=mean(lifeExp)) %>%
+ggplot(aes(continent, mean_lifeExp)) +
+    labs(x = 'Continent', y = 'Mean Life Expectancy (Years)') +
+    geom_bar(fill=rgb(0.1,0.4,0.5,0.7), stat="identity") +
+    theme_bw()+
+    theme(axis.title = element_text(color="#777777", face="bold", size=12))
+```
+
+I bet that if I set ECHO to False you wouldnt be able to tell the difference! Moving on ...
+
+# Join, merge, look up
+**Problem:** You have two data sources and you need info from both in one new data object.
+
+**Solution:** Perform a join, which borrows terminology from the database world, specifically SQL.
+
+**Activity 1**
+
+Create a second data frame, complementary to Gapminder. Join this with (part of) Gapminder using a  dplyr join function and make some observations about the process and result. Explore the different types of joins. Examples of a second data frame you could build:
+
+* One row per country, a country variable and one or more variables with extra info, such as language spoken, NATO membership, national animal, or capitol city. If you really want to be helpful, you could attempt to make a pull request to resolve this issue, where I would like to bring ISO country codes into the gapminder package.
+
+* One row per continent, a continent variable and one or more variables with extra info, such as northern versus southern hemisphere.
+
+I decided to use a subset of both the the wbcountries data set and the gapminder data set to answer this question. I used only the first 15 rows of the wbcountries dataset and the first 10 of the gapminder dataset in order to present the results in reasonably sized tables. In all cases the tables are joined by the country column.
+
+```{r}
+wb_subset <- (data.frame(wbcountries()) %>%
+select(country, capital, lat, long))[c(1:15),]
+
+gapminder_subset <- (gapminder %>%
+  filter(year==2002))[c(1:10),]
+```
+
+I started by looking at inner_join between data frames. The first table has the world bank data as the X table and the gapminder data as the Y table. As we can see this returns all of the rows from wb_subset where the country is also found in gapminder_subset, and all of the columns from wb_subset and gapminder_subset. 
+
+The second table has the gapminder data as the X table and the world bank data as the Y table.As we can see this returns all of the rows from gapminder_subset where the country is also found in wb_subset, and all of the columns from wb_subset and gapminder_subset and all of the columns from gapminder_subset and wb_subset. 
+
+I then used the merge function which essentially performs the same as an inner_join and has the same syntax. This data is presented in tables three and four.
+
+Amazingly enough - all of the tables have the same rows of data. This makes sense as they both present all of the countries that are common in both tables. The only differences are the order of columns which is dependant on which data frame is listed first in the function.
+
+```{r}
+inner_join(wb_subset,gapminder_subset) %>%
+knitr::kable()
+
+inner_join(gapminder_subset,wb_subset) %>%
+knitr::kable()
+
+merge(wb_subset, gapminder_subset) %>%
+knitr::kable()
+
+merge(gapminder_subset,wb_subset) %>%
+knitr::kable()
+```
+
+The next join that I looked at was semi_join. With the semi join we can see that regardless of which table is X and which is Y, we get the same countries as with the inner_join. This is because all countries that are present in both tables are shown once again. The difference here is that only columns from table X are kept. As you can see in the first table where the wb_subset data frame is X, only the columns from that data frame are returned. Likewise when the gapminder data frame is X in the second table, only the columns from that data frame are returned.
+
+```{r}
+semi_join(wb_subset,gapminder_subset) %>%
+knitr::kable()
+
+semi_join(gapminder_subset,wb_subset) %>%
+knitr::kable()
+```
+
+
+Moving forward we have the left_join! This is where we get into the NAs! In the first table (wb_subet = X, gapminder_subset = Y) we see that all rows from wb_subset are returned and all of the columns from both datasets. Similarly in the second table (gapminder_subet = X, wb_subset = Y) we see that all rows from gapminder_subset are returned and all of the columns from both datasets. We get NA values anywhere where there is no data for a country in those columns resulting from the left join.
+
+
+```{r}
+left_join(wb_subset,gapminder_subset) %>%
+knitr::kable()
+
+left_join(gapminder_subset,wb_subset) %>%
+knitr::kable()
+```
+
+The second last join that we have here is the anti_join! These joins return the values from the X table where there are no values in the Y table and only returns the columns from X. The first table (wb_subet = X, gapminder_subset = Y) we see that countries such as 'Antigua and Barbuda' that aren't found in the gapminder dataset are returned. In the second table (gapminder_subet = X, wb_subset = Y) countries such as 'Bangladesh' that aren't found in the wb_subset are returned.
+
+```{r}
+anti_join(wb_subset,gapminder_subset) %>%
+knitr::kable()
+
+anti_join(gapminder_subset,wb_subset) %>%
+knitr::kable()
+```
+
+That leaves us with the full_join! This join is the easiest to understand in that it returns all rows and all columns from both data sets. This is why the order of X and Y don't matter and we only need to write it one way. Enjoy!
+
+```{r}
+full_join(gapminder_subset,wb_subset) %>%
+knitr::kable()
+```
+
+**That brings us to the end of Homework 4. 'Join' me for more fun next week where I will complete Homework 5!**
+
