@@ -11,7 +11,7 @@ Welcome to the repository of **Cassandra Konecny**. I am a first year MSc studen
 
 [**Homework 01: Edit README.md and Use R Markdown**](https://github.com/CassKon/STAT545-hw-konecny-cassandra/tree/abe9b9e09d1049258ed481a859144ea36eded3ec/hw-1)
 
-[**Homework 02: Explore Gapminder and use dplyr **](https://github.com/CassKon/STAT545-hw-konecny-cassandra/tree/abe9b9e09d1049258ed481a859144ea36eded3ec/hw-2)
+[**Homework 02: Explore Gapminder and use dplyr**](https://github.com/CassKon/STAT545-hw-konecny-cassandra/tree/abe9b9e09d1049258ed481a859144ea36eded3ec/hw-2)
 
 
 ## Process and Documentation
