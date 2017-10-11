@@ -397,4 +397,14 @@ knitr::kable()
 | American Samoa       | NA        |    NA|       NA|         NA|          NA| Pago Pago        | -14.2846 | -170.691 |
 | Antigua and Barbuda  | NA        |    NA|       NA|         NA|          NA| Saint John's     | 17.1175  | -61.8456 |
 
-**That brings us to the end of Homework 4. 'Join' me for more fun next week where I will complete Homework 5!**
+**That brings us to the end of Homework 4. 'Join' me for more fun next week where I will complete Homework 5!** \# Report your process
+
+-   I created the rmd file on my computer locally (in RStudio) and then committed changes/pushed to GitHub. I also made some changes on GitHub such as the creation and editting of the README file.
+
+-   Overall I didn't find any of the questions too challenging. I accidentally started doing a lot of this in my homework last week and so I tried to compare methods/expand on my learning.
+
+-   The joins are definitely tricky to keep straight in my head but I feel like this gave me good exposure to different combinations of joins
+
+-   I also further expanded some basic skills throughout such as manipulating data sets and making new data frames.
+
+Overall this was a good synthesis of some of the concepts that we have covered over the past few weeks!
