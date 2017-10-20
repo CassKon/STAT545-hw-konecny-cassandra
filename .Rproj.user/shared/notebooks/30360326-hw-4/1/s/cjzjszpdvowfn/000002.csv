@@ -1,0 +1,5 @@
+"0","gapminder %>%"
+"0","group_by(continent, year) %>%"
+"0","summarise(mean_lifeExp=mean(lifeExp)) %>%"
+"0","spread(year, mean_lifeExp) %>%"
+"0","knitr::kable()"

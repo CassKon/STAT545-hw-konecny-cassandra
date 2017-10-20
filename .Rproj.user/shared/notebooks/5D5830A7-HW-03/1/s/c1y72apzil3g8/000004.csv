@@ -1,0 +1,8 @@
+"0","gapminder %>%"
+"0","ggplot(aes(gdpPercap)) + "
+"0","  facet_wrap(~ continent,scales=""free_x"") + "
+"0","  geom_histogram(binwidth=1000) +"
+"0","  labs(x = 'Per Capita GDP', y = 'Count') +"
+"0","  theme_bw() +"
+"0","  theme(axis.title = element_text(color=""#777777"", face=""bold"", size=12)) +"
+"0","  theme(axis.text.x = element_text(angle = 60, hjust = 1))"

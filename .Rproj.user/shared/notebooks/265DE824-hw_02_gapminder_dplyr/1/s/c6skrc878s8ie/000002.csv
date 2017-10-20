@@ -1,0 +1,1 @@
+"0","ggplot(gapminder, aes(year, gdpPercap, colour=continent)) + geom_smooth() "

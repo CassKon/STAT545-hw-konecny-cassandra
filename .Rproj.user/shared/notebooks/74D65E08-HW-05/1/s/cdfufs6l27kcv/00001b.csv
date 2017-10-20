@@ -1,0 +1,5 @@
+"0","ggplot(gapminder, aes(gdpPercap, lifeExp)) + "
+"0","   geom_point(aes(size=pop, fill=continent), shape=21) +"
+"0","  scale_x_log10() +"
+"0","  scale_fill_brewer(palette=""Dark2"") +"
+"0","  labs(x = ""GDP per capita"", y = ""Life Expectancy (years)"", fill = 'Continent', size = ""Population Size"")"

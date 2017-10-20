@@ -1,0 +1,6 @@
+"0","library(RColorBrewer)"
+"0","library(gapminder)"
+"0","ggplot(gapminder, aes(lifeExp)) +"
+"0","    geom_histogram(aes(y=..density.., fill=continent)) +"
+"0","    facet_wrap(~ continent) +"
+"0","    scale_fill_brewer(palette=""Accent"")"

@@ -1,0 +1,7 @@
+"0","suppressMessages(library(gapminder))"
+"0","suppressMessages(library(dplyr))"
+"0","suppressMessages(library(ggplot2))"
+"0","suppressMessages(library(tidyr))"
+"0","suppressMessages(library(reshape))"
+"0","suppressMessages(library(weatherData))"
+"0","suppressMessages(library(wbstats))"

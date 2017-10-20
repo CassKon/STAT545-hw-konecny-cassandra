@@ -1,0 +1,4 @@
+"0","gapminder %>% "
+"0","  group_by(country) %>% "
+"0","  mutate(lag_gdpPercap=lag(gdpPercap,1)) %>%"
+"0","  drop_na(lag_gdpPercap)"

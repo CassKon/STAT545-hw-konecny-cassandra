@@ -1,0 +1,5 @@
+"0","gapminder %>%"
+"0","    group_by(continent) %>% "
+"0","    summarize(max_gdpPercap = max(gdpPercap),"
+"0","              min_gdpPercap = min(gdpPercap)) %>%"
+"0","knitr::kable()"

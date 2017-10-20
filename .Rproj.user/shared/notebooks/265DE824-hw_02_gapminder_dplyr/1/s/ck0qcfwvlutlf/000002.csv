@@ -1,0 +1,5 @@
+"0","filter(gapminder,"
+"0","       ((continent == ""Americas"") & year %in% 1950:2000)|"
+"0","           ((continent == ""Europe"") & year %in% 1950:2000)) %>%"
+"0","select(year, gdpPercap,country,continent) %>%"
+"0","ggplot(aes(year, gdpPercap, group=country, colour=continent)) + geom_point() + geom_smooth(se=FALSE, method=""loess"", span=5)"

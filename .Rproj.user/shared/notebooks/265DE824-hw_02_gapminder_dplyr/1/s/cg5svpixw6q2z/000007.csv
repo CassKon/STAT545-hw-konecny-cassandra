@@ -1,0 +1,1 @@
+"0","ggplot(gapminder, aes(year, lifeExp, colour=continent)) + geom_smooth() +theme_minimal()"

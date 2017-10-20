@@ -1,0 +1,6 @@
+"0","ggplot(gapminder, aes(year, lifeExp)) +"
+"0","    labs(x = 'Year', y = 'Life Expectancy') +"
+"0","    facet_wrap(~ continent,scales=""free_x"") +"
+"0","    geom_point(colour=""#9966CC"", alpha=0.2) + geom_smooth(span=2, colour=""#666699"", se=FALSE)+"
+"0","    theme_bw() +"
+"0","    theme(axis.title = element_text(color=""#777777"", face=""bold"", size=12))"

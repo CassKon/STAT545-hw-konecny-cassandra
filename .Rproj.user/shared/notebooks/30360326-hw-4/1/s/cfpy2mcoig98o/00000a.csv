@@ -1,0 +1,2 @@
+"0","merge(gapminder_subset,wb_subset) %>%"
+"0","knitr::kable()"

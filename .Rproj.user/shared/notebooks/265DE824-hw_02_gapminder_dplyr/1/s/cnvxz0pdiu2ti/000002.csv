@@ -1,0 +1,1 @@
+"0","ggplot(gapminder, aes(gdpPercap, lifeExp, colour=continent)) + geom_point() + scale_x_log10()"

@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "# STAT545-hw-konecny-cassandra\n\nWelcome to the repository of **Cassandra Konecny**. I am a first year MSc student in the department of zoology working with Dr. Christopher Harley. I am interested in how climate change (i.e. how changes in salinity, temperate, pH) influence species interactions and community composition. I am also an avid SCUBA diver and enjoy spending time in the ocean!\n\n![](http://diveubc.com/wp-content/uploads/2014/04/Cass.jpg)\n\n\n> \"Every time I slip into the ocean, it's like going home.\"  - Sylvia Earle \n\n## Homework links:\n\n[**Homework 01: Edit README.md and Use R Markdown**](https://github.com/CassKon/STAT545-hw-konecny-cassandra/blob/ce817abed6e02f0f7682aba0d55e43e72cd43fd6/hw-1/hw01_gapminder.md)\n\n[**Homework 02: Explore Gapminder and use dplyr**](https://github.com/CassKon/STAT545-hw-konecny-cassandra/blob/ce817abed6e02f0f7682aba0d55e43e72cd43fd6/hw-2/hw_02_gapminder_dplyr.md)\n\n[**Homework 03: Use dplyr to manipulate and explore data (also use ggplot2)**](https://github.com/CassKon/STAT545-hw-konecny-cassandra/blob/ce817abed6e02f0f7682aba0d55e43e72cd43fd6/hw-3/HW-03.md)\n\n[**Homework 04: Homework 04: Tidy data and joins**](https://github.com/CassKon/STAT545-hw-konecny-cassandra/blob/ce817abed6e02f0f7682aba0d55e43e72cd43fd6/hw-4/hw-4.md)\n\n\n\n## Process and Documentation\n\n* I created a public repository on GitHub and initiated the readme file \n* I originally edited the read me file on GitHub and added in my introduction text.\n* I then used R studio to create a new project and make a copy of the repo on my local machine.\n* I then made a series of modifications (added links, bold text, a quote and an image) by opening the readme .md file in RStudio. I used * the suggested workflow of pulling from GitHub, making changes, saving the changes, Committing the changes and then pushing them each time.\n* I originally also added the homework link but then deleted it on GitHub as I decided to include it in the issue instead.\n\nOverall, I feel like I now have a better understanding of the workflow outlined and how each step contributes to a better experience! It was a useful exercise to review working both on GitHub and locally.\n",
+    "created" : 1508515818333.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3572202243",
+    "id" : "B0701631",
+    "lastKnownWriteTime" : 1508515886,
+    "last_content_update" : 1508515886699,
+    "path" : "~/Desktop/STAT545A/CKonecny_HW/README.md",
+    "project_path" : "README.md",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "markdown"
+}
