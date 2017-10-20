@@ -17,14 +17,4 @@ Welcome to the repository of **Cassandra Konecny**. I am a first year MSc studen
 
 [**Homework 04: Homework 04: Tidy data and joins**](https://github.com/CassKon/STAT545-hw-konecny-cassandra/blob/ce817abed6e02f0f7682aba0d55e43e72cd43fd6/hw-4/hw-4.md)
 
-
-
-## Process and Documentation
-
-* I created a public repository on GitHub and initiated the readme file 
-* I originally edited the read me file on GitHub and added in my introduction text.
-* I then used R studio to create a new project and make a copy of the repo on my local machine.
-* I then made a series of modifications (added links, bold text, a quote and an image) by opening the readme .md file in RStudio. I used * the suggested workflow of pulling from GitHub, making changes, saving the changes, Committing the changes and then pushing them each time.
-* I originally also added the homework link but then deleted it on GitHub as I decided to include it in the issue instead.
-
-Overall, I feel like I now have a better understanding of the workflow outlined and how each step contributes to a better experience! It was a useful exercise to review working both on GitHub and locally.
+[**Homework 05: Factor and figure management; Repo hygiene**]

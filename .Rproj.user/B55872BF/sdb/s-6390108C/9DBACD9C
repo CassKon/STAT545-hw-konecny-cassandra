@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "This Folder is created for Homework assignment #1 for STAT 545. Within this folder you will find the markdown and Rmarkdown files for the assignment. The homework assignment can be found here:\n\n[**Homework 01: Edit README.md and Use R Markdown**](http://stat545.com/hw01_edit-README.html)\n\nMy compleed assignment can be found here: \n\n[**Cassandr Konecny hw01**](https://github.com/CassKon/STAT545-hw-konecny-cassandra/tree/abe9b9e09d1049258ed481a859144ea36eded3ec/hw-1)\n\n## Process and Documentation\n\n* I created a public repository on GitHub and initiated the readme file \n* I originally edited the read me file on GitHub and added in my introduction text.\n* I then used R studio to create a new project and make a copy of the repo on my local machine.\n* I then made a series of modifications (added links, bold text, a quote and an image) by opening the readme .md file in RStudio. I used * the suggested workflow of pulling from GitHub, making changes, saving the changes, Committing the changes and then pushing them each time.\n* I originally also added the homework link but then deleted it on GitHub as I decided to include it in the issue instead.\n\nOverall, I feel like I now have a better understanding of the workflow outlined and how each step contributes to a better experience! It was a useful exercise to review working both on GitHub and locally.\n\n",
+    "created" : 1508516090763.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1451534500",
+    "id" : "9DBACD9C",
+    "lastKnownWriteTime" : 1508516201,
+    "last_content_update" : 1508516201401,
+    "path" : "~/Desktop/STAT545A/CKonecny_HW/hw-1/README.md",
+    "project_path" : "hw-1/README.md",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "markdown"
+}
