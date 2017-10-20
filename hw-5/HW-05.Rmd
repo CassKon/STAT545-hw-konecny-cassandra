@@ -2,7 +2,7 @@
 title: "HW-05"
 author: "Cassandra"
 date: '2017-10-16'
-output: html_document
+output: github_document
 ---
 
 * Load required packages
