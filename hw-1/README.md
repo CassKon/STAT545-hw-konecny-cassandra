@@ -2,9 +2,9 @@ This Folder is created for Homework assignment #1 for STAT 545. Within this fold
 
 [**Homework 01: Edit README.md and Use R Markdown**](http://stat545.com/hw01_edit-README.html)
 
-My compleed assignment can be found here: 
+My completed assignment can be found here: 
 
-[**Cassandr Konecny hw01**](https://github.com/CassKon/STAT545-hw-konecny-cassandra/tree/abe9b9e09d1049258ed481a859144ea36eded3ec/hw-1)
+[**Cassandra Konecny hw01**](https://github.com/CassKon/STAT545-hw-konecny-cassandra/blob/6ea531a2345b955e62a0a3400851846cb3494713/hw-1/hw01_gapminder.md)
 
 ## Process and Documentation
 

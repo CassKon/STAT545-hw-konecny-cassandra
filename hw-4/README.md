@@ -4,4 +4,4 @@
 
 **My completed assignment can be found here:**
 
-[Cassandr Konecny hw04](https://github.com/CassKon/STAT545-hw-konecny-cassandra/blob/c17bc554c76ac09b1eb9e4d4fa5e67acd3d77b7d/hw-4/hw-4.md)
+[Cassandra Konecny hw04](https://github.com/CassKon/STAT545-hw-konecny-cassandra/blob/c17bc554c76ac09b1eb9e4d4fa5e67acd3d77b7d/hw-4/hw-4.md)
