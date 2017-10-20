@@ -107,6 +107,7 @@ ggplot() + geom_polygon(data=plotData, aes(x=long, y=lat, group=group, fill=Mean
         theme(axis.title = element_text(color="#777777", face="bold", size=12)) +
         scale_fill_viridis(option="plasma", direction = 1)
 ```
+
 ## Writing figures to file
 
 * I saved the map locally on my computer using ggsave() and then embedded it in my report.
