@@ -4,7 +4,7 @@ This Folder is created for Homework assignment #5 for STAT 545. Within this fold
 
 My completed assignment can be found here: 
 
-[**Cassandr Konecny hw05**](https://github.com/CassKon/STAT545-hw-konecny-cassandra/blob/8096e82ebe24fa0768004ab5d82c8c4e6f042a05/hw-5/HW-05.md)
+[**Cassandra Konecny hw05**](https://github.com/CassKon/STAT545-hw-konecny-cassandra/blob/8096e82ebe24fa0768004ab5d82c8c4e6f042a05/hw-5/HW-05.md)
 
 
 # Report your process
