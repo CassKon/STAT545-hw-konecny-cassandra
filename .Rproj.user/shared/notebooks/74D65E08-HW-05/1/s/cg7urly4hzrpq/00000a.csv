@@ -1,5 +1,0 @@
-"0","singerData$year <- fct_reorder(singerData$year, singerData$artist_hotttnesss, mean, .desc = TRUE)"
-"0","singerData %>%"
-"0","  group_by(year) %>%"
-"0","  summarize(mean_hotness=mean(artist_hotttnesss)) %>%"
-"0","  arrange(desc(mean_hotness))"
