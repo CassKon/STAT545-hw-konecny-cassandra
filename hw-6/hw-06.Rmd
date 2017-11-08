@@ -1,0 +1,239 @@
+---
+title: "Homework 6: Data wrangling wrap up"
+author: "Cassandra Konecny"
+date: '2017-11-06'
+output: github_document
+---
+Load required packages:
+```{r, message=FALSE}
+library(tidyverse)
+library(purrr)
+library(singer)
+library(ggmap)
+library(leaflet)
+library(htmlwidgets)
+library(webshot)
+library(tidyverse)
+library(stringr)
+library(gapminder)
+library(broom)
+library(reshape2)
+```
+
+# Work with the singer data
+
+## Map latitude and longitude into human readable information using revgeocode()
+
+* I could not get the map function to work with revgeocode but I am not quite sure why. I decided to instead execute the same task using the lapply function. I first filtered the data and then I created a subset to use with revgeocode. The results are displayed in a table below. 
+
+
+```{r, message=FALSE}
+
+#Filter out observations with no latitude or longitude
+filteredlocations <- singer_locations %>%
+  filter(!is.na(latitude)) %>%
+  filter(!is.na(longitude)) 
+
+#Use subset of data for task
+filteredlocations <- filteredlocations[1:20,]
+  
+
+# use lapply to pass longitude and latitude arguments into the revgeocode function
+location <- do.call(rbind,
+                  lapply(1:nrow(filteredlocations),
+                         function(i)revgeocode(as.numeric(filteredlocations[i,12:11]))))
+filteredlocations <- cbind(filteredlocations,location)
+
+filteredlocations %>%
+  select(longitude, latitude,city,location) %>%
+  knitr::kable()
+
+```
+
+## Try to check wether the place in city corresponds to the information you retrieved
+
+* Based on the above table the city matched the retrieved information. Keep in mind this is only 30 records from the singer_locations table however and therefore there could be error in reverse geocoding other locations.
+
+##  Go visual!
+
+ * I decided to use leaflet to view the locations that I reverse geocoded. I then used the saveWidget and webshot packages to save the html and screenshot the map. This way it could be seen in a github document.
+
+```{r}
+# Use leaflet to visualize the data
+map <- leaflet()  %>%   
+addTiles() %>%
+addCircles( lat=filteredlocations$latitude,lng=filteredlocations$longitude,popup = filteredlocations$artist_name) %>%
+addProviderTiles(providers$OpenStreetMap)
+
+# Take a screenshot of map so that it can be vied it github document.
+saveWidget(map,"temp.html", selfcontained = TRUE)
+webshot("temp.html", file = "Rplot.png",
+        cliprect = "viewport")
+```
+
+# Character data
+
+## In code that doesn’t use stringr, you’ll often see paste() and paste0(). What’s the difference between the two functions? What stringr function are they equivalent to? How do the functions differ in their handling of NA?
+
+paste() concatenates arguments together after converting them to character strings. The function takes three inputs: One or more R objects (...), a character string to seperate terms (sep) and an optional character string to seperate the results (collapse).
+
+paste0() works the same way as paste but is equivelent to paste(..., sep = "", collapse) and therefore can be more efficient.
+
+These paste functions are equivalent to the str_c() function in stringr. the syntax for this function is str_c(..., sep = "", collapse = NULL). 
+
+The paste() and paste0() functions handle NA as a string "NA" and therefore outputs may not always be meaningful. Contrastingly, the str_c function handles NA as true NA values.
+
+## In your own words, describe the difference between the sep and collapse arguments to str_c().
+
+The seperation argument defines what character string will seperate terms that are concatenated between vectors. The collapse argument will define the string that will seperate these concatenations. 
+
+Here is an example:
+
+```{r}
+# Let's say that we have vector 1 and vector 2
+Vector1 <- c("a", "b","c")
+Vector2 <- c("d", "e","f")
+# We want to concatenate them using the str_c() function()
+# Let's set sep equal to " SEP " and collapse equal to "COLLAPSE"
+str_c(Vector1, Vector2, sep = " SEP ", collapse = " COLLAPSE ")
+```
+From this example we can see that the sep argument goes betweent the values that are concatenated (a&d, b&e, c&f) whereas the collapse argument goes between these groups of characters.
+
+## Use str_length() and str_sub() to extract the middle character from a string. What will you do if the string has an even number of characters?
+
+```{r}
+# First we need to create a string
+string <- "Squid"
+# Next we can use the str_length function to determine the number of characters in the string. The syntax is: str_length(string)
+length <- str_length(string)
+# Now that we know the length we can use the str_sub function to extract the middle character. This syntax is: str_sub(string, start = 1L, end = -1L)
+# This if statements extracts the middle character if there is an odd number of characters or the middle 2 characters if there is an even number.
+if (length%%2 == 0) {
+   str_sub(string, start = (length/2), end = (length/2)+1)
+} else {
+str_sub(string, start = (length/2)+.5, end = (length/2)+.5)
+}
+string = "Squids"
+length <- str_length(string)
+if (length%%2 == 0) {
+   str_sub(string, start = (length/2), end = (length/2)+1)
+} else {
+str_sub(string, start = (length/2)+.5, end = (length/2)+.5)
+}
+```
+## What does str_wrap() do? When might you want to use it?
+The str_wrap() function takes a character string as an input and reformats it into paragraphs. In this function the user cans specify the width, indent and exdent of the paragraph. The syntax is: str_wrap(string, width = 80, indent = 0, exdent = 0). This function would be useful for formatting long chunks of text. 
+
+Here's an example:
+```{r}
+text <- "This chapter introduces you to string manipulation in R. You’ll learn the basics of how strings work and how to create them by hand, but the focus of this chapter will be on regular expressions, or regexps for short. Regular expressions are useful because strings usually contain unstructured or semi-structured data, and regexps are a concise language for describing patterns in strings. When you first look at a regexp, you’ll think a cat walked across your keyboard, but as your understanding improves they will soon start to make sense."
+
+#Let's use a width of 80 with no indent or exdent
+cat(str_wrap(text, width = 80, indent = 0, exdent = 0),"\n")
+
+# Now let's make the width 30 and set the indent to 2
+cat(str_wrap(text, width = 30, indent = 2, exdent = 0),"\n")
+```
+
+
+
+## What does str_trim() do? What’s the opposite of str_trim()?
+
+str_trim() removes whitespace from a character vector. This can be from the left right or both the left and right. You could use string pad with pad = " " to add whitespace.
+
+
+# Work with a nested data frame
+
+* For this exercise I followed the example given in the [split-apply-combine](http://stat545.com/block024_group-nest-split-map.html#general-approach-nesting) lesson from class and modified where I saw fit.
+
+## Nest the data by country (and continent)
+```{r}
+nested.gapminder <- gapminder %>% 
+   group_by(continent, country) %>% 
+   nest()
+
+```
+
+## Fit a model of life expectancy against year. Possibly quadratic, possibly robust (see above prompt re: function writing).
+
+* I decided here to create both a linear and quadratic model function.
+
+```{r}
+linear_lifeExpModel <- function(df) {
+  lm(lifeExp ~ I(year - 1950) , data = df)
+}
+quadratic_lifeExpModel <- function(df) {
+  lm(lifeExp ~ I(year - 1950) + I((year - 1950)^2), data = df)
+}
+```
+
+## Use functions for working with fitted models or the broom package to get information out of your linear models.
+
+* I tried out the map() function here to make sure that I was able to run the linear model on the nested data.
+
+```{r}
+map(nested.gapminder$data[1:2], linear_lifeExpModel)
+```
+
+## Use the usual dplyr, tidyr, and ggplot2 workflows to explore, e.g., the estimated cofficients.
+
+* I created a new data frame with the linear model data.
+
+```{r}
+unnested.gapminder <- nested.gapminder %>% 
+  mutate(linear_fit = map(data, linear_lifeExpModel), 
+         linear_tidy = map(linear_fit, tidy)
+         ) %>%
+  select(continent, country, linear_tidy) %>% 
+  unnest(linear_tidy) 
+
+head(unnested.gapminder) %>%
+  knitr::kable()
+
+```
+
+* Next I modified the functions to return AIC values for the model.
+
+```{r}
+linear_Model <- function(df) {
+  lm(lifeExp ~ I(year - 1950) , data = df) %>%
+  AIC()
+}
+quad_Model <- function(df) {
+  lm(lifeExp ~ I(year - 1950) + I((year - 1950)^2), data = df) %>%
+  AIC()
+}
+```
+
+* I then ran the linear and quadratic model functions to get the AIC values for both models for each country.
+
+```{r}
+AIC.gapminder <- nested.gapminder %>% 
+  mutate(linear_fit = map(data, linear_Model), 
+         linear_tidy = map(linear_fit, tidy),
+         quad_fit = map(data, quad_Model), 
+         quad_tidy = map(quad_fit, tidy)
+         ) %>%
+  select(continent, country, linear_tidy, quad_tidy) %>% 
+  unnest(linear_tidy, quad_tidy) %>%
+  rename(linear = x, quadratic = x1)
+
+head(AIC.gapminder) %>%
+  knitr::kable()
+```
+
+* Finally I compared the AIC values for the linear and quadratic models across all countries in a boxplot. From this we can see that the quadratic model generally has lower AIC values.
+
+```{r}
+AIC.gapminder <- AIC.gapminder %>%
+  melt(type=c('linear','quadratic'))
+
+ggplot(AIC.gapminder, aes(variable, value)) + 
+  geom_boxplot(aes(fill= variable)) + 
+  theme_classic() +
+  labs(x="Model Type", y= "AIC Value") +
+  theme(axis.text=element_text(size=12),
+  axis.title=element_text(size=14,face="bold")) +
+  theme(legend.position="none")
+```
+
