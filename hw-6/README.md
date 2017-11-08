@@ -9,3 +9,9 @@ My completed assignment can be found here:
 
 # Report your process
 
+* Overall I deifnitely founf this one of the more challenging homework assignments. I think this was partially due to all the different tools available to accomplish tasks. I am not sure why I couldn't get the map function to work with revgeocode and so I am excited to look at others assignments to see how to do it.
+
+* The assignment was useful to reinforce things that we learned in class and try to apply them to different problems. I still find that the lists are confussing and I really need to think through the structure of the data before attacking the problem.
+
+* I also notices that the revgeocode function has a limit of how many searches it can process pet day as it relies an google APIs. This good to know if I need to use this function int he future.
+
