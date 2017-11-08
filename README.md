@@ -17,4 +17,6 @@ Welcome to the repository of **Cassandra Konecny**. I am a first year MSc studen
 
 [**Homework 04: Homework 04: Tidy data and joins**](https://github.com/CassKon/STAT545-hw-konecny-cassandra/blob/ce817abed6e02f0f7682aba0d55e43e72cd43fd6/hw-4/hw-4.md)
 
-[**Homework 05: Factor and figure management; Repo hygiene**](https://github.com/CassKon/STAT545-hw-konecny-cassandra/blob/8096e82ebe24fa0768004ab5d82c8c4e6f042a05/hw-5/HW-05.md)
+[**Homework 05: Factor and figure management; Repo hygiene**](https://github.com/CassKon/STAT545-hw-konecny-cassandra/blob/8096e82ebe24fa0768004ab5d82c8c4e6f042a05/hw-5/HW-05.md
+
+[**Homework 06: Data wrangling wrap up**](https://github.com/CassKon/STAT545-hw-konecny-cassandra/blob/e351b6cd6e1eb9c083b7a98bfc55d15484aa10fb/hw-6/hw-06.md)
