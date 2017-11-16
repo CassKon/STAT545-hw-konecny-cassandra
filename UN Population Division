@@ -1,0 +1,1188 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1" /><link href="//fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        /* Styles from http://www.un.org/styleguide/ */
+        body {
+            font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 18px;
+            line-height: 20.15px;
+        }
+
+        h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+            font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: 700;
+            line-height: 1.1;
+            color: #4d4d4d;
+        }
+
+        h1, .h1, h2, .h2, h3, .h3 {
+            margin-top: 18px;
+            margin-bottom: 9px;
+        }
+
+
+        h1, .h1 {
+            font-size: 33px;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin: 0.67em 0;
+        }
+
+        h2, .h2 {
+            font-size: 27px;
+        }
+
+        h3 {
+            margin-top: 26px;
+            color: #666666;
+        }
+
+        h3 {
+            font-size: 20.8px;
+        }
+
+        h4 {
+            margin-bottom: 2px;
+        }
+
+        h4, .h4 {
+            font-size: 17px;
+        }
+
+        h5 {
+            font-size: 14.3px;
+            margin-bottom: 2px;
+        }
+
+        h5 {
+            font-size: 14.3px;
+            margin-bottom: 2px;
+        }
+
+        h6, .h6 {
+            font-size: 12px;
+        }
+
+        p {
+            margin-bottom: 18px;
+        }
+
+        .labelClass {
+            padding-left: 1px;
+            color: #4d4d4d;
+            font-size: 18.2px;
+            text-transform: uppercase;
+            margin-top: 0;
+            letter-spacing: 0.03em;
+            border-bottom: #00aeef solid 3px;
+            padding-bottom: 7px;
+            margin-bottom: 9px;
+        }
+
+        .blue {
+            color: #008FD5;
+        }
+
+        .grey {
+            color: #4D4D4D;
+        }
+
+        .footer .list-inline .footer-brand {
+            height: 21px;
+            margin-top: -6px;
+            margin-bottom: 10px;
+            background: url('//www.un.org/styleguide/img/un-logo-footer.png') left top no-repeat;
+        }
+
+            .footer .list-inline .footer-brand a {
+                font-weight: 500;
+                font-size: 21px;
+                line-height: 21px;
+                letter-spacing: -0.02em;
+                color: #4d4d4d;
+                text-transform: uppercase;
+                text-decoration: none;
+                display: block;
+                padding-left: 30px;
+            }
+
+        .footer #block-menu-menu-footer-links ul.nav li {
+            font-size: 11px;
+            float: left;
+            padding-right: 6.5px;
+            margin-right: 5.85px;
+            border-right: #737373 solid 1px;
+            line-height: 1;
+        }
+
+        .footer ul.nav li {
+            padding: 0;
+            margin: 0 0 6.5px 0;
+        }
+
+            .footer ul.nav li a {
+                padding: 0;
+                margin: 0;
+                color: black;
+            }
+
+                .footer ul.nav li a:hover {
+                    background-color: unset;
+                }
+
+        .footer ul.nav li {
+            list-style-image: none;
+            list-style-type: none;
+            margin-left: 0;
+        }
+
+        .nav > li {
+            position: relative;
+            display: block;
+        }
+
+        footer {
+            margin-top: 50px;
+        }
+    </style>
+    <style type="text/css">
+        /* Overrides Bootstrap CSS */
+        .navbar .navbar-brand {
+            height: auto !important;
+        }
+
+        .no-gutter > [class*='col-'] {
+            padding-right: 0;
+            padding-left: 0;
+        }
+    </style>
+    <style>
+        /* Custom styles */
+        a:link, a:active, a:hover {
+            text-decoration: none;
+            color: #003c97;
+        }
+
+        a:visited {
+            text-decoration: none;
+            color: #0049b6;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .no-border {
+            border: 0px;
+        }
+
+        .blackbordertop {
+            border-top: 1px solid black;
+        }
+
+        .no-margin {
+            margin: 0px;
+        }
+
+        .no-padding {
+            padding: 0px !important;
+        }
+
+        em {
+            font-style: italic;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .FullWidth {
+            width: 100%;
+        }
+
+        .FullHeight {
+            height: 100%;
+        }
+
+        .VerticallyCentered {
+            vertical-align: middle;
+        }
+
+        .HorizontallyCentered {
+            text-align: center;
+        }
+
+        .HorizontallyCentered {
+            text-align: center;
+        }
+
+        @media (min-width: 1150px) {
+            .bigscreenonly {
+                display: block;
+            }
+
+            .smallscreenonly {
+                display: none;
+            }
+        }
+
+        @media (max-width: 1149px) {
+            .bigscreenonly {
+                display: none;
+            }
+
+            .smallscreenonly {
+                display: block;
+            }
+        }
+    </style>
+    <script type="text/javascript">
+        function openFeedback(URL, sender, args) {
+            var windowHeight = 355;
+
+            //Get the reference to window
+            var windowFeedback = $("#windowFeedback");
+
+            //Create window object if not created yet
+            if (!windowFeedback.data("kendoWindow")) {
+                windowFeedback.kendoWindow({
+                    width: "300px",
+                    height: windowHeight + "px",
+                    title: "Feedback",
+                    content: URL,
+                    modal: true,
+                    resizable: false,
+                    actions: ['close']
+                });
+            }
+            else {
+                windowFeedback.data("kendoWindow").refresh(URL);
+            }
+
+            //Move window to location where event happened when window was requested to be open (most of the times, mouse location when user clicked the link)
+            var X = args.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
+            var Y = args.clientY + document.body.scrollTop + document.documentElement.scrollTop - windowHeight;
+            windowFeedback.closest(".k-window").css({
+                top: Y,
+                left: X
+            });
+
+            //Open the feedback window
+            windowFeedback.data("kendoWindow").open();
+        }
+
+        //This is called from within the feedback window
+        function closeFeedback() {
+            $("#windowFeedback").data("kendoWindow").close();
+        }
+    </script>
+    
+    <title>World Population Prospects - Population Division - United Nations</title>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-16635386-3', 'auto');
+        ga('send', 'pageview');
+    </script>
+    <style type="text/css">
+        .PageTitle {
+            width: 100%;
+            text-align: center;
+            font-size: 120%;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .CellHeading {
+            border-bottom: solid 1px lightblue;
+            font-weight: bold;
+        }
+
+        .AlternatingRow tr:nth-child(odd) {
+            background-color: white;
+        }
+
+        .AlternatingRow tr:nth-child(even) {
+            background-color: #E9F1F8;
+        }
+
+        .TabsAsButtons.k-tabstrip {
+            text-align: center;
+            width: 100%;
+        }
+
+            .TabsAsButtons.k-tabstrip .k-tabstrip-items {
+                text-align: center;
+            }
+
+                .TabsAsButtons.k-tabstrip .k-tabstrip-items > .k-item {
+                    background-image: none;
+                    background-color: white;
+                    border: solid 2px lightgray;
+                    display: inline-block;
+                    border-radius: 0px;
+                    max-width: 300px;
+                    height: auto;
+                    margin-top: 5px;
+                }
+
+                    .TabsAsButtons.k-tabstrip .k-tabstrip-items > .k-item.k-state-active {
+                        border: solid 2px #5B86AD !important;
+                        background-color: #5B86AD !important;
+                    }
+
+                        .TabsAsButtons.k-tabstrip .k-tabstrip-items > .k-item.k-state-active .k-link {
+                            color: white !important;
+                        }
+
+                .TabsAsButtons.k-tabstrip .k-tabstrip-items .k-item .k-link {
+                    padding-top: 4px;
+                    font-size: 0.9em;
+                }
+
+                .TabsAsButtons.k-tabstrip .k-tabstrip-items .k-item:not(:first-child) {
+                    margin-left: 10px;
+                }
+
+            .TabsAsButtons.k-tabstrip .k-content {
+                border: none;
+            }
+    </style>
+    <style type="text/css">
+        /* Custom style for Kendo UI Menu */
+        .k-menu .k-item {
+            background-color: white;
+            border-color: #070050;
+        }
+
+            .k-menu .k-item.k-state-hover {
+                background-color: #5B92E5;
+            }
+
+                .k-menu .k-item.k-state-hover > a {
+                    color: white;
+                }
+
+            .k-menu .k-item.k-state-border-down > span {
+                background-color: #5B92E5;
+                color: white;
+            }
+
+        /* Custom style for Kendo UI TabStrip */
+        .k-tabstrip {
+            color: black;
+            background-color: white !important;
+            border-width: 0px !important;
+        }
+
+            .k-tabstrip:focus {
+                -webkit-box-shadow: none !important;
+                -moz-box-shadow: none !important;
+                box-shadow: none !important;
+            }
+
+            .k-tabstrip .k-tabstrip-items {
+                border-width: 0 !important;
+                /* Align tabs to the left instead of center (default) */
+                text-align: left;
+            }
+
+                .k-tabstrip .k-tabstrip-items > .k-item {
+                    height: 28px;
+                }
+
+                    .k-tabstrip .k-tabstrip-items > .k-item.k-tab-on-top {
+                        /* Avoid border below opened tab */
+                        padding-bottom: 2px;
+                    }
+
+                    .k-tabstrip .k-tabstrip-items > .k-item > .k-link {
+                        /* Increase tab's width */
+                        margin-left: 20px;
+                        margin-right: 20px;
+                    }
+
+                    .k-tabstrip .k-tabstrip-items > .k-item.k-state-active {
+                        background-color: white !important;
+                        border-top-color: rgba(50, 77, 146, 1) !important;
+                        border-left-color: darkgray !important;
+                        border-right-color: darkgray !important;
+                        border-bottom-color: white !important;
+                    }
+
+            .k-tabstrip > .k-content {
+                border-color: darkgray !important;
+                color: black;
+            }
+
+            .k-tabstrip .k-content.k-state-active {
+                color: black;
+            }
+
+        /* Custom style for Kendo UI PanelBar */
+        .k-panelbar .k-item .k-header {
+            background-color: aliceblue;
+            color: black;
+        }
+
+            .k-panelbar .k-item .k-header.k-state-hover {
+                color: black;
+            }
+
+            .k-panelbar .k-item .k-header.k-state-selected {
+                box-shadow: none;
+                background-color: rgba(50, 77, 146, 1);
+                color: white;
+            }
+
+                .k-panelbar .k-item .k-header.k-state-selected.k-state-hover {
+                    color: white;
+                }
+
+            .k-panelbar .k-item .k-header.k-state-focused {
+                border: none;
+            }
+
+        .k-panelbar .k-item .k-content {
+            padding: 10px;
+        }
+
+        /*Alternating row color for Grids */
+        .k-grid .k-alt {
+            background-color: #E9F1F8;
+        }
+
+        .k-grid tr:hover {
+            background-color: #bce0ff !important;
+        }
+
+        /* Custom style for Kendo UI Slider*/
+        .k-slider .k-slider-selection {
+            background-color: #5B92E5;
+        }
+
+        .k-slider .k-draghandle {
+            background-image: none;
+            background-color: darkblue;
+            border-color: darkblue;
+        }
+
+            .k-slider .k-draghandle:hover {
+                background-image: none;
+                background-color: darkblue;
+                border-color: darkblue;
+            }
+
+            .k-slider .k-draghandle.k-state-focused:hover {
+                background-image: none;
+                background-color: darkblue;
+                border-color: darkblue;
+            }
+
+
+        .k-slider .k-state-focused {
+            background-color: darkblue;
+            border-color: darkblue;
+            box-shadow: none;
+        }
+
+            .k-slider .k-state-focused:link {
+                background-color: darkblue;
+                border-color: darkblue;
+                box-shadow: none;
+            }
+
+            .k-slider .k-state-focused:hover {
+                background-color: darkblue;
+                border-color: darkblue;
+                box-shadow: none;
+            }
+
+        .k-widget.k-tooltip.k-slider-tooltip {
+            background-color: white;
+            border-color: darkblue;
+        }
+
+        /* Combobox and DropDownList */
+        .k-list-container .k-item {
+            background-color: white;
+            color: black;
+        }
+
+            .k-list-container .k-item.k-state-selected {
+                background-color: #5B92E5;
+                border: none;
+                color: white;
+            }
+
+            .k-list-container .k-item.k-state-hover {
+                background-color: gray;
+                color: white;
+            }
+
+        .k-dropdown-wrap.k-state-focused {
+            background-color: #e9e9e9 !important;
+        }
+
+        .k-dropdown-wrap.k-state-hover {
+            background-color: #e9e9e9 !important;
+        }
+
+        /* ListBox*/
+        .k-list > .k-state-selected {
+            background-color: #5B92E5 !important;
+            color: white;
+            border: none;
+        }
+
+        /* Buttons */
+        .k-button:active {
+            border-color: lightblue !important;
+            background-color: #5B92E5 !important;
+        }
+    </style>
+    <style type="text/css">
+        #DESA_PD {
+            margin: 18px 0 18px;
+            text-transform: uppercase;
+            cursor: default;
+        }
+
+            #DESA_PD img {
+                float: left;
+            }
+
+            #DESA_PD .headers {
+                letter-spacing: -0.66px;
+                margin-left: 80px;
+                display: block;
+            }
+
+                #DESA_PD .headers > a {
+                    line-height: 39px;
+                    font-weight: 600;
+                    font-size: 33px;
+                    color: #414042;
+                    text-decoration: none;
+                }
+
+                #DESA_PD .headers small {
+                    line-height: 21.45px;
+                    font-size: 21.45px;
+                    display: block;
+                    color: #00aeef;
+                }
+
+                    #DESA_PD .headers small a {
+                        color: #00aeef;
+                        text-decoration: none;
+                    }
+
+        #DESA_PD_Product {
+            margin: 18px 0 18px;
+        }
+    </style>
+    <style type="text/css">
+        /* Style to create tiles */
+
+        .TileLine {
+            text-align: center;
+        }
+
+            .TileLine .TileBox {
+                display: inline-block;
+                /* Leave 5% for border */
+                height: 95%;
+                position: relative;
+                border: solid 2px transparent;
+                padding-top: 3px;
+                padding-left: 3px;
+                padding-right: 3px;
+                text-decoration: none;
+            }
+
+                .TileLine .TileBox:hover {
+                    border: solid 2px #5B86AD;
+                }
+
+                .TileLine .TileBox .TileImage {
+                    /* Reserve height dedicated to the label */
+                    padding-bottom: 20px;
+                    /* Set image max width, so it allows dynamic resizing */
+                    max-width: 100%;
+                    text-align: center;
+                    vertical-align: top;
+                    /* Remove blue border automatically added in some browsers */
+                    border: none;
+                }
+
+                .TileLine .TileBox .TileLabel {
+                    display: inline-block;
+                    position: absolute;
+                    bottom: 0px;
+                    left: 0px;
+                    right: 0px;
+                    background-color: transparent;
+                    color: #5B86AD;
+                    font-weight: bold;
+                }
+
+        @media (max-width: 966px) {
+            .TileLine {
+                height: auto !important;
+            }
+
+                .TileLine .TileBox {
+                    width: 100% !important;
+                    height: 100% !important;
+                    margin-left: 0px !important;
+                    max-height: 106px !important; /* includes padding! see non-media class */
+                    text-align: left !important;
+                    border-bottom: solid 1px lightgray;
+                }
+
+                    .TileLine .TileBox .TileImage {
+                        padding-bottom: 0px !important;
+                        max-width: 100px !important;
+                        max-height: 100px !important;
+                    }
+
+                    .TileLine .TileBox .TileLabel {
+                        background-color: transparent !important;
+                        top: 50% !important;
+                        left: 130px !important;
+                        right: initial !important;
+                        bottom: initial !important;
+                        transform: translateY(-50%) !important;
+                        -webkit-transform: translateY(-50%) !important;
+                        -moz-transform: translateY(-50%) !important;
+                        -ms-transform: translateY(-50%) !important;
+                    }
+        }
+    </style>
+    
+    <style type="text/css">
+        .IntroductionText {
+            text-align: justify;
+            font-size: smaller;
+        }
+
+        .Disclaimer {
+            text-align: left;
+            margin-top: 20px;
+            font-size: small;
+        }
+    </style>
+
+<style>.pdf:after {vertical-align:super; content: url('/unpd/wpp/Common_Images/pdf_icon_small.png');}</style><style>.xls:after {vertical-align:super; content: url('/unpd/wpp/Common_Images/xls_icon_small.png');}</style><link href="/unpd/wpp/Common_Libraries/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" /><link href="/unpd/wpp/Common_Styles/bootstrap.min.css" rel="stylesheet" type="text/css" /><link href="/unpd/wpp/Common_Styles/Bootstrap_Addons.css" rel="stylesheet" type="text/css" /><link href="//kendo.cdn.telerik.com/2017.2.504/styles/kendo.common.min.css" rel="stylesheet" type="text/css" /><link href="//kendo.cdn.telerik.com/2017.2.504/styles/kendo.default.min.css" rel="stylesheet" type="text/css" /><link href="/unpd/wpp/Common_Styles/slicknav.min.css" rel="stylesheet" type="text/css" /><link href="/unpd/wpp/Common_Styles/Button.css" rel="stylesheet" type="text/css" /><link href="/unpd/wpp/Common_Styles/ToggleButton.css" rel="stylesheet" type="text/css" /><title>
+
+</title></head>
+<body>
+    
+
+<style type="text/css">
+    #brand-bar {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        background: #f2f2f2;
+        margin: 0;
+        padding: 0;
+        border: none !important;
+        border-bottom: #00adef solid 5px !important;
+        height: 41px;
+        min-height: inherit;
+    }
+
+        #brand-bar .brandbar-header a.navbar-brand:before {
+            font-family: FontAwesome;
+            color: black;
+            content: "\f015";
+            font-size: 18.07px;
+            line-height: 0.9;
+            margin-right: 7.8px;
+            float: left;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+
+        #brand-bar .brandbar-header {
+            padding-top: 10px;
+        }
+
+            #brand-bar .brandbar-header a {
+                padding: 0;
+                font-size: 12.35px;
+                line-height: 17.03px;
+                font-weight: 400;
+                letter-spacing: 0.03em;
+                color: black;
+            }
+
+    .navbar-fixed-top {
+        top: 0;
+        border-width: 0 0 1px;
+    }
+
+    @media (min-width: 768px) {
+        .navbar-fixed-top, .navbar-fixed-bottom {
+            border-radius: 0;
+        }
+    }
+
+    .navbar-fixed-top, .navbar-fixed-bottom {
+        position: fixed;
+        right: 0;
+        left: 0;
+    }
+
+    @media (min-width: 768px) {
+        .navbar {
+            border-radius: 0;
+        }
+    }
+
+    .navbar {
+        position: relative;
+        min-height: auto;
+        border: 1px solid transparent;
+        margin-bottom: 0px;
+    }
+
+    .container {
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    @media (min-width: 768px) {
+        .navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {
+            margin-left: 0;
+        }
+    }
+
+    .navbar-default .navbar-brand {
+        color: #777;
+    }
+</style>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+                <div id="brand-bar">
+                    <div class="container row">
+                        <div class="col-md-4">
+                            <div class="brandbar-header">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <a class="navbar-brand" href="http://www.un.org/en/">Welcome to the United Nations</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /UN global brand bar -->
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                
+    <div class="bigscreenonly">
+        <div class="row row-eq-height">
+            <div id="DESA_PD" class="col-xs-7">
+                <a href="https://www.un.org/en/">
+                    <img src="//www.un.org/development/desa/en/wp-content/themes/desa-bootstrap/images/UN_logo_1.png" /></a>
+                <span class="headers">
+                    <a href="https://www.un.org/en/">United Nations</a>
+                    <small><a href="https://www.un.org/development/desa/en/">DESA</a> / <a href="http://www.un.org/en/development/desa/population/">Population Division</a></small>
+                </span>
+            </div>
+            <div id="DESA_PD_Product" class="col-xs-5 text-right">
+                <h2 class="bold no-margin">World Population Prospects 2017</h2>
+            </div>
+        </div>
+    </div>
+    <div class="smallscreenonly">
+        <div class="row">
+            <div class="col-xs-12">
+                <div style="background-color: #5B92E5; color: white; text-align: center">
+                    Population Division
+                </div>
+            </div>
+        </div>
+    </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <form method="post" action="./" id="form1">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTIwODg0NDM2NDdkZM+b8v3oAdcI1yk+xmca7qARSMJFqvj+pmFyzLaI3J2g" />
+
+
+<script type="text/javascript">
+//<![CDATA[
+function prepareOpenFeedback(sender, eventArgs) { openFeedback(window.location.protocol + '//esa.un.org/unpd/wpp/Feedback/Feedback.aspx?Page=%2funpd%2fwpp%2fdefault.aspx', sender, eventArgs);}//]]>
+</script>
+
+<script src="//code.jquery.com/jquery-3.1.1.min.js" type="text/javascript"></script>
+<script src="/unpd/wpp/Common_Scripts/bootstrap.min.js" type="text/javascript"></script>
+<script src="//kendo.cdn.telerik.com/2017.2.504/js/kendo.all.min.js" type="text/javascript"></script>
+<script src="/unpd/wpp/Common_Scripts/jquery.slicknav.min.js" type="text/javascript"></script>
+<script src="/unpd/wpp/Common_Scripts/jquery.scrollTo.min.js" type="text/javascript"></script>
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="B658BBBF" />
+                    <div id="windowFeedback"></div>
+                    
+    
+
+<style>
+    #mnuDesktop {
+        font-size: 13px;
+        color: white;
+        background-color: rgb(77, 77, 77);
+        background-image: none;
+    }
+
+        #mnuDesktop .k-item {
+            border: solid 1px rgb(99, 99, 99);
+        }
+
+            #mnuDesktop .k-item .k-link {
+                height: 16.5px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                margin: auto;
+                border: none;
+                padding-left: 15.8px;
+                padding-right: 15.8px;
+                color: white;
+                background-color: rgb(77, 77, 77);
+            }
+
+            #mnuDesktop .k-item:last-child {
+                border: none;
+            }
+
+    .MobileMenuBar {
+        position: relative;
+        background-color: #5B92E5;
+        height: 20px;
+        overflow: visible;
+    }
+
+        .MobileMenuBar img {
+            /* Move the icon to be vertically centered with the header defined in the MasterPage*/
+            position: absolute;
+            left: 10px;
+            top: -15px;
+        }
+
+        .MobileMenuBar .Text {
+            color: white;
+            display: inline-block;
+            position: absolute;
+            left: 0px;
+            right: 0px;
+            text-align: center;
+        }
+
+    #MobileMenu {
+        background-color: #EDEDED;
+        z-index: 2000; /*must be higher than the 1030 set by bootstrap for the navbar*/
+    }
+
+        #MobileMenu .Header {
+            background-color: #5B92E5;
+            color: white;
+            text-align: center;
+            width: 100%;
+            font-weight: bold;
+            font-size: 16px;
+            vertical-align: middle;
+            height: 30px;
+            padding-top: 8px;
+        }
+
+        #MobileMenu .Footer {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+        }
+
+        #MobileMenu .slicknav_menu {
+            background-color: transparent;
+        }
+
+        #MobileMenu .slicknav_nav {
+            background-color: transparent;
+            color: black !important;
+        }
+
+            #MobileMenu .slicknav_nav a {
+                color: black !important;
+            }
+
+        #MobileMenu .slicknav_btn {
+            display: none;
+        }
+</style>
+<!-- menu for large screen -->
+<div class="bigscreenonly">
+    
+<!-- The display:none is to hide this structure until immediately before building the menu; otherwise, the ul/li items might show/flicker during page load -->
+<!-- It is necessary to use ResolveURL to generate Absolute (not Relative) URLs due to the use of ASP.NET Routing! -->
+<div id="menuItemsContainer" style="display: none">
+    <ul id="mnuDesktop">
+        <li>
+            <a href="/unpd/wpp/">WPP Home</a>
+        <li>
+            <a href="/unpd/wpp/General/FAQs.aspx">Frequently Asked Questions</a></li>
+        <li>Data
+            <ul>
+                <li>
+                    <a href="/unpd/wpp/DVD/">Download Center</a></li>
+                <li>
+                    <a href="/unpd/wpp/DataQuery/">Interactive Data</a></li>
+                <li>
+                    <a href="/unpd/wpp/Maps/">Maps</a></li>
+                <li>
+                    <a href="/unpd/wpp/Graphs/">Graphs</a></li>
+            </ul>
+        </li>
+        <li>Reports/Documents
+            <ul>
+                <li>
+                    <a href="/unpd/wpp/General/DefinitionRegions.aspx">Definition of Regions</a></li>
+                <li>
+                    <a href="/unpd/wpp/DataSources/">Data Sources</a></li>
+                <li>
+                    <a href="/unpd/wpp/General/GlossaryDemographicTerms.aspx">Glossary of Demographic Terms</a></li>
+                <li>
+                    <a href="/unpd/wpp/Publications/">Publications</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="http://esa.un.org/unpd/wup/">World Urbanization Prospects</a></li>
+        <li>
+            <a href="http://www.unpopulation.org/">Population Division</a></li>
+    </ul>
+</div>
+
+</div>
+<!-- bar and menu for small screen -->
+<div class="smallscreenonly">
+    <!-- Bar -->
+    <div class="MobileMenuBar" onclick="openResponsivePanel()">
+        <!-- toggle button menu for small screen -->
+        <img src="Common_Images/MobileMenuIcon.png" />
+        <div class="Text">World Population Prospects 2017</div>
+    </div>
+    <!-- Menu -->
+    <div id="MobileMenu">
+        <div class="Header">World Population Prospects 2017</div>
+        <div id="mobilemenu"></div>
+        
+<!-- The display:none is to hide this structure until immediately before building the menu; otherwise, the ul/li items might show/flicker during page load -->
+<!-- It is necessary to use ResolveURL to generate Absolute (not Relative) URLs due to the use of ASP.NET Routing! -->
+<div id="menuItemsContainer" style="display: none">
+    <ul id="mnuMobile">
+        <li>
+            <a href="/unpd/wpp/">WPP Home</a>
+        <li>
+            <a href="/unpd/wpp/General/FAQs.aspx">Frequently Asked Questions</a></li>
+        <li>Data
+            <ul>
+                <li>
+                    <a href="/unpd/wpp/DVD/">Download Center</a></li>
+                <li>
+                    <a href="/unpd/wpp/DataQuery/">Interactive Data</a></li>
+                <li>
+                    <a href="/unpd/wpp/Maps/">Maps</a></li>
+                <li>
+                    <a href="/unpd/wpp/Graphs/">Graphs</a></li>
+            </ul>
+        </li>
+        <li>Reports/Documents
+            <ul>
+                <li>
+                    <a href="/unpd/wpp/General/DefinitionRegions.aspx">Definition of Regions</a></li>
+                <li>
+                    <a href="/unpd/wpp/DataSources/">Data Sources</a></li>
+                <li>
+                    <a href="/unpd/wpp/General/GlossaryDemographicTerms.aspx">Glossary of Demographic Terms</a></li>
+                <li>
+                    <a href="/unpd/wpp/Publications/">Publications</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="http://esa.un.org/unpd/wup/">World Urbanization Prospects</a></li>
+        <li>
+            <a href="http://www.unpopulation.org/">Population Division</a></li>
+    </ul>
+</div>
+
+        <div style="text-align: center; margin-top: 25px">
+            <button id="backBtn" type="button" onclick="closeResponsivePanel()" class="btn">&lt; Close</button>
+        </div>
+        <div class="Footer">
+            <img src="Common_Images/un_logo.png" />
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        /* Initially, menu items are hidden to avoid being displayed during page load; When reaching here, it means page is loaded and is now being constructed, so this is to make menu items available */
+        $("#menuItemsContainer").css("display", "block");
+
+        //Build menu for large screen
+        $("#mnuDesktop").kendoMenu({
+            orientation: 'horizontal'
+        }).data("kendoMenu");
+
+        //Build menu for small screen
+        $('#mnuMobile').slicknav({
+            label: '',
+            duplicate: false,
+            prependTo: '#mobilemenu'
+        });
+        //Menu is always "open" because it is in fact hosted inside a Kendo UI Responsive Panel, that is only shown when requested (e.g. click in the navigation bar button)
+        $('#mnuMobile').slicknav('open');
+
+        //Build the responsive panel, it won't open until requested (e.g. click in the navigation bar button)
+        $("#MobileMenu").kendoResponsivePanel({
+            breakpoint: 967,
+            orientation: "left",
+            toggleButton: "nothing" //to allow more control over the open behavior
+        });
+    });
+
+    function openResponsivePanel() {
+        /*
+        Timeout is used because, if opened immediately, the click may propagate to the menu item that is displayed in the position touched, immediately navigating to the destination!
+        Using setTimeout will avoid this because it gives time to "untouch" the screen and display the menu
+        */
+        setTimeout(function () {
+            $("#MobileMenu").data("kendoResponsivePanel").open();
+        }, 250);
+    }
+
+    function closeResponsivePanel() {
+        $("#MobileMenu").data("kendoResponsivePanel").close();
+    }
+</script>
+
+    <div style="margin-top: 10px">
+        
+    <p class="IntroductionText">
+        The <span style="color: black; font-weight: bold"><i>2017 Revision</i> of <i>World Population Prospects</i></span> is the twenty-fifth round of official United Nations population estimates and projections that have been prepared by the Population Division of the Department of Economic and Social Affairs of the United Nations Secretariat. The main results are presented in a series of Excel files displaying key demographic indicators for each development group, income group, region, subregion and country or area for selected periods or dates within 1950-2100. A publication labelled Key findings and advance tables, which provide insights on the results of this latest revision, is also made available. 
+    </p>
+    <div style="width: 100%; text-align: center; color: #0066cc; font-size: medium; font-weight: bold; border-bottom-color: #0066cc; border-bottom-width: 2px; border-bottom-style: solid">
+        Quick Navigation
+    </div>
+    <br />
+    <div style="margin-left: 20px; margin-right: 20px; text-align: center">
+        <div class="TileLine">
+            <a href="DVD/" class="TileBox">
+                <img id="body_body_imgDownload" class="TileImage" src="Common_Images/DownloadTile.png" />
+                <span class="TileLabel">Download Data Files</span>
+            </a>
+            <a href="DataQuery/" class="TileBox" style="margin-left: 65px">
+                <img id="body_body_Image6" class="TileImage" src="Common_Images/interactivedata.gif" />
+                <span class="TileLabel">Interactive Data</span>
+            </a>
+            <a href="Maps/" id="body_body_A1" class="TileBox" style="margin-left: 65px">
+                <img id="body_body_Image1" class="TileImage" src="Common_Images/GlobeTile.png" />
+                <span class="TileLabel">Maps</span>
+            </a>
+            <a href="Graphs/" class="TileBox" style="margin-left: 65px">
+                <img id="body_body_imgGraphs" class="TileImage" src="Common_Images/GraphsTile.png" />
+                <span class="TileLabel">Graphs</span>
+            </a>
+        </div>
+        <div class="TileLine" style="margin-top: 30px">
+            <a href="http://www.un.org/en/development/desa/population/events/other/21/index.shtml" class="TileBox">
+                <img id="body_body_Image2" class="TileImage" src="Common_Images/antenna.png" />
+                <span class="TileLabel">Press Release</span>
+            </a>
+            <a href="Publications/" class="TileBox" style="margin-left: 65px">
+                <img id="body_body_imgPublications" class="TileImage" src="Common_Images/PublicationsTile.png" />
+                <span class="TileLabel">Publications</span>
+            </a>
+            <!--
+            <a href="Publications/Files/WPP2017_KeyFindings.pdf" class="TileBox" target="_blank" style="margin-left: 65px">
+                <img id="body_body_imgKeyFindings" class="TileImage" src="Common_Images/PublicationsTile.png" />
+                <span class="TileLabel">Key Findings (PDF)</span>
+            </a>
+            -->
+			<a href="DataSources/" class="TileBox" style="margin-left: 65px">
+                <img id="body_body_imgDS" class="TileImage" src="Common_Images/DataSources.png" />
+                <span class="TileLabel">Data Sources</span>
+            </a>
+        </div>
+    </div>
+    <p class="Disclaimer"><b>Disclaimer:</b> This web site contains data tables, figures, maps, analyses and technical notes from the current revision of the World Population Prospects. These documents do not imply the expression of any opinion whatsoever on the part of the Secretariat of the United Nations concerning the legal status of any country, territory, city or area or of its authorities, or concerning the delimitation of its frontiers or boundaries.</p>
+
+    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div style="width: 100%; text-align: center; margin-top: 20px">
+                    <hr />
+                    <a href="javascript:void(0);" onclick="prepareOpenFeedback(this, event)">
+                        <h5>Leave feedback about this page</h5>
+                    </a>
+                    <hr />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <footer class="footer container">
+                    <div class="row list-inline">
+                        <div class="col-md-12">
+                            <div class="pull-left flip footer-brand">
+                                <a href="http://www.un.org/en/" title="Home"><span class="site-name">United Nations</span></a>
+                            </div>
+                            <div class="pull-right flip">
+                                <section class="region region-footer-5">
+                                    <div id="block-menu-menu-footer-links" class="block block-menu">
+                                        <ul class="menu nav">
+                                            <li class="first leaf"><a href="//www.un.org/en/contactus/">Contact</a></li>
+                                            <li class="leaf"><a href="//www.un.org/en/aboutun/copyright/">Copyright </a></li>
+                                            <li class="leaf"><a href="//www.un.org/en/aboutun/fraudalert/">Fraud Alert</a></li>
+                                            <li class="leaf"><a href="//www.un.org/en/aboutun/privacy/">Privacy Notice</a></li>
+                                            <li class="leaf"><a href="//www.un.org/en/siteindex/">Site Index</a></li>
+                                            <li class="last leaf"><a href="//www.un.org/en/aboutun/terms/">Terms of Use</a></li>
+                                        </ul>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
