@@ -13,6 +13,7 @@ library(downloader)
 library(dplyr)
 library(forcats)
 library(ggplot2)
+library(plyr)
 ```
 
 * Download Data and bring the data in as data frame
@@ -140,5 +141,3 @@ con <- gsub(" ", "-", con)
 ggsave(paste0("lifeExp_country_facet_by_continentpng",con,".png"))
 })
 ```
-
-
