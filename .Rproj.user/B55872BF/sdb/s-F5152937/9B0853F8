@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1509560584902.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "9B0853F8",
+    "lastKnownWriteTime" : 0,
+    "last_content_update" : 1509560584902,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "37C29320",
+        "caption" : "RawAbundances",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=RawAbundances&cache_key=37C29320",
+        "displayedObservations" : 54,
+        "environment" : "",
+        "object" : "RawAbundances",
+        "preview" : 0,
+        "totalObservations" : 54,
+        "variables" : 6
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

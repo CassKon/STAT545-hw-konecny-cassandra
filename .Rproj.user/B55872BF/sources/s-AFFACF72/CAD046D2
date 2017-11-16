@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1510791247329.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "CAD046D2",
+    "lastKnownWriteTime" : 1510802892,
+    "last_content_update" : 1510802892741,
+    "path" : "~/Desktop/STAT545A/CKonecny_HW/hw-7/hw-7.Rmd",
+    "project_path" : "hw-7/hw-7.Rmd",
+    "properties" : {
+        "cursorPosition" : "144,0",
+        "scrollLine" : "142",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

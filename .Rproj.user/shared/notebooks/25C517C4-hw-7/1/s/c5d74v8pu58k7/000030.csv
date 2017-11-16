@@ -1,0 +1,10 @@
+"0","p3 <- gapminderData %>%"
+"0","ggplot(aes(year, lifeExp)) +"
+"0","    labs(x = 'Year', y = 'Life Expectancy') +"
+"0","    facet_wrap(~ continent,scales=""free_x"") +"
+"0","    geom_point(colour=""#9966CC"", alpha=0.2) + geom_smooth(span=2, colour=""#666699"", se=FALSE)+"
+"0","    theme_bw() +"
+"0","    theme(axis.title = element_text(color=""#777777"", face=""bold"", size=12))"
+"0","ggsave(""lifeExp_country_facet_by_continent.png"", p3)"
+"2","Saving 7.29 x 4.51 in image
+"

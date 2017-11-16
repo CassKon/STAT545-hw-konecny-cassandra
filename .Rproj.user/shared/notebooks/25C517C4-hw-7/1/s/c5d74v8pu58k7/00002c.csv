@@ -1,0 +1,9 @@
+"0","p2 <- gapminderData %>%"
+"0","mutate(lifeExp_pop = (lifeExp/pop)) %>%"
+"0","ggplot(aes(x=continent, y=lifeExp_pop)) + geom_boxplot(colour=""gray10"", fill=""skyblue"") +"
+"0","scale_y_log10() +  labs(x = 'Continent', y = 'Life Expectancy (weighted by population)') +"
+"0","theme_bw() +"
+"0","theme(axis.title = element_text(color=""#777777"", face=""bold"", size=12))"
+"0","ggsave(""lifeExp_popWeighted_by_continent.png"", p2)"
+"2","Saving 7.29 x 4.51 in image
+"

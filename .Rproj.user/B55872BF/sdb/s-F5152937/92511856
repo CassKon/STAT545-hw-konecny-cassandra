@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "# Adult Abundances vs Temperatures\nData1 <- RawAbundances \n# %>%  filter(Pool != \"E1\")\n\np1 <- AvgMaxStack <- ggplot(data = Data1) + \n  geom_point(aes(x = Max, y = Abundance, group=Sitkana, color= Sitkana)) +\n  geom_smooth(aes(x = Max, y = Abundance, group= Sitkana, color= Sitkana), alpha=0.5) +\n  theme_classic()\np1\n\np2 <- AvgMaxStack <- ggplot(data = Data1) + \n  geom_point(aes(x = Avg, y = Abundance, group=Sitkana, color= Sitkana)) +\n  geom_smooth(aes(x = Avg, y = Abundance, group= Sitkana, color= Sitkana), alpha=0.5) +\n  theme_classic()\np2\n\ngrid.arrange(p1,p2)\n\n\n# Proportion data vs temperature\n\np3 <- ggplot(data = AvgMax) + \n  geom_point(aes(x = Max, y = Rchange)) +\n  geom_smooth(aes(x = Max, y = Rchange), span=5, alpha=0.5) +\n  theme_classic()\np3\n\np4 <- ggplot(data = AvgMax) + \n  geom_point(aes(x = Avg, y = Rchange)) +\n  geom_smooth(aes(x = Avg, y = Rchange), span=5, alpha=0.5) +\n  theme_classic()\np4\n\ngrid.arrange(p3,p4)\n\n# Proportion data vs temperature\n\nData2 <- AvgMax %>%  filter(Pool != \"A5\")\n\np6 <- ggplot(data = Data2) + \n  geom_point(aes(x = Max, y = Rchange)) +\n  geom_smooth(aes(x = Max, y = Rchange), alpha=0.5) +\n  theme_classic()\np6\n\np7 <- ggplot(data = Data2) + \n  geom_point(aes(x = Avg, y = Rchange)) +\n  geom_smooth(aes(x = Avg, y = Rchange), alpha=0.5) +\n  theme_classic()\np7\n\ngrid.arrange(p6,p7)\n\n# Proportion data vs temperature\n\np6 <- ggplot(data = PercentAbundances) + \n  geom_point(aes(x = Max, y = DeltaPsit, shape =Pool)) +\n  scale_shape_manual(values=c(0,1,2,3,4,5,6,7,8)) +\n  geom_smooth(aes(x = Max, y = DeltaPsit),span=5) +\n  theme_classic()\np6\n\np7 <- ggplot(data = PercentAbundances) + \n  geom_point(aes(x = Avg, y = DeltaPsit, shape =Pool)) +\n  scale_shape_manual(values=c(0,1,2,3,4,5,6,7,8)) +\n  geom_smooth(aes(x = Avg, y = DeltaPsit),span=5, alpha=0.5) +\n  theme_classic()\np7\n\ngrid_arrange_shared_legend(p6, p7, ncol = 1, nrow = 2, position = \"right\")\n\n\nlibrary(ggplot2)\nlibrary(gridExtra)\nlibrary(grid)\n\ngrid_arrange_shared_legend <- function(..., ncol = length(list(...)), nrow = 1, position = c(\"bottom\", \"right\")) {\n  plots <- list(...)\n  position <- match.arg(position)\n  g <- ggplotGrob(plots[[1]] + \n                    theme(legend.position = position))$grobs\n  legend <- g[[which(sapply(g, function(x) x$name) == \"guide-box\")]]\n  lheight <- sum(legend$height)\n  lwidth <- sum(legend$width)\n  gl <- lapply(plots, function(x) x +\n                 theme(legend.position = \"none\"))\n  gl <- c(gl, ncol = ncol, nrow = nrow)\n  \n  combined <- switch(position,\n                     \"bottom\" = arrangeGrob(do.call(arrangeGrob, gl), \n                                            legend,ncol = 1,\n                                            heights = unit.c(unit(1, \"npc\") - lheight, lheight)),\n                     \"right\" = arrangeGrob(do.call(arrangeGrob, gl),\n                                           legend, ncol = 2,\n                                           widths = unit.c(unit(1, \"npc\") - lwidth, lwidth)))\n  \n  grid.newpage()\n  grid.draw(combined)\n  \n  # return gtable invisibly\n  invisible(combined)\n}",
+    "created" : 1509560162078.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "1085163446",
+    "id" : "92511856",
+    "lastKnownWriteTime" : 5764607523304513813,
+    "last_content_update" : 1509574448444,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
