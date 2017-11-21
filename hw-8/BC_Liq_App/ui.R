@@ -1,5 +1,5 @@
 fluidPage(
-  titlePanel("BC Liquor Store prices"),
+  titlePanel(title=div(img(src="BC_Liquor_Store_logo.png", height = 50), "BC Liquor Store Prices")),
   sidebarLayout(
     sidebarPanel(
       sliderInput("priceInput", "Price", 0, 100, c(25, 40), pre = "$"),
@@ -10,7 +10,12 @@ fluidPage(
     ),
     mainPanel(
       plotOutput("coolplot"),
-      br(), br(),
+      br(),
+      br(),
+      downloadButton('downloadData', 'Download Results'),
+      br(),
+      br(),
+      br(),
       tableOutput("results")
     )
   )

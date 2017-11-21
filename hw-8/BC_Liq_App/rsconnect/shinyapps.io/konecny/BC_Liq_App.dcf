@@ -5,8 +5,8 @@ account: konecny
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 238449
-bundleId: 1088328
+bundleId: 1088537
 url: https://konecny.shinyapps.io/BC_Liq_App/
-when: 1511284921.8198
+when: 1511291135.37674
 asMultiple: FALSE
 asStatic: FALSE

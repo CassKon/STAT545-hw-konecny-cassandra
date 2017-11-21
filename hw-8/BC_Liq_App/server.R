@@ -21,13 +21,20 @@ function(input, output) {
       return(NULL)
     }    
     
-    bcl %>%
-      filter(Price >= input$priceInput[1],
-             Price <= input$priceInput[2],
-             Type == input$typeInput,
-             Country == input$countryInput
-      )
-  })
+    
+    itemlist <- bcl %>%
+        filter(Price >= input$priceInput[1],
+               Price <= input$priceInput[2],
+               Type == input$typeInput,
+               Country == input$countryInput
+        )
+    
+    
+    if (nrow(itemlist)==0){
+    return(NULL)
+  }
+    else{itemlist}
+    })    
   
   output$coolplot <- renderPlot({
     if (is.null(filtered())) {
@@ -40,4 +47,16 @@ function(input, output) {
   output$results <- renderTable({
     filtered()
   })
+  
+  
+  output$downloadData <- downloadHandler(
+    filename = function() {
+      paste("data-", Sys.Date(), ".csv", sep="")
+    },
+    content = function(file) {
+      write.csv(filtered(), file)
+    }
+  )
 }
+
+
