@@ -29,7 +29,7 @@ function(input, output) {
                Country == input$countryInput
         )
     
-    
+#Added an If statement to catch results where 0 rows are returned
     if (nrow(itemlist)==0){
     return(NULL)
   }
@@ -48,7 +48,7 @@ function(input, output) {
     filtered()
   })
   
-  
+# Added downloadHandler function to be able to download the table as a .csv file  
   output$downloadData <- downloadHandler(
     filename = function() {
       paste("data-", Sys.Date(), ".csv", sep="")

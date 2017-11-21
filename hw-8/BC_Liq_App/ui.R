@@ -1,4 +1,5 @@
 fluidPage(
+  #Added BC Liquor store logo to the web application
   titlePanel(title=div(img(src="BC_Liquor_Store_logo.png", height = 50)), windowTitle = "BC Liquor Store Prices"),
   sidebarLayout(
     sidebarPanel(
@@ -12,6 +13,7 @@ fluidPage(
       plotOutput("coolplot"),
       br(),
       br(),
+      # Added a download button to download the results returned
       downloadButton('downloadData', 'Download Results'),
       br(),
       br(),
