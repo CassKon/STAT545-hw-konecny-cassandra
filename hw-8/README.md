@@ -24,7 +24,7 @@ Here is the link to my [ui.R](https://github.com/CassKon/STAT545-hw-konecny-cass
 **References**
 
 * [Web application code](http://stat545.com/shiny01_activity.html#final-shiny-app-code)
-* [Data]("https://raw.githubusercontent.com/STAT545-UBC/STAT545-UBC.github.io/master/shiny_supp/2016/bcl-data.csv")
+* [Data)(https://raw.githubusercontent.com/STAT545-UBC/STAT545-UBC.github.io/master/shiny_supp/2016/bcl-data.csv)
 * [Adding Images in title section](https://stackoverflow.com/questions/36182535/how-to-place-an-image-in-an-r-shiny-title)
 * [Donloading data](https://shiny.rstudio.com/reference/shiny/0.14/downloadHandler.html)
 * [Download button](https://shiny.rstudio.com/reference/shiny/1.0.5/downloadButton.html)
