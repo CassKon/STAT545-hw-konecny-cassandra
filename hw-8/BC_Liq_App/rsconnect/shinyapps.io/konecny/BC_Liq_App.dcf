@@ -1,0 +1,12 @@
+name: BC_Liq_App
+title: BC_Liq_App
+username:
+account: konecny
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 238449
+bundleId: 1088328
+url: https://konecny.shinyapps.io/BC_Liq_App/
+when: 1511284921.8198
+asMultiple: FALSE
+asStatic: FALSE
