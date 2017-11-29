@@ -42,3 +42,23 @@ reciprocal(1:10, plot_it=TRUE)
 ```
 
 Wow!!!
+
+AND when powers don't make you feel Powerful enough there is the regress function! This let's you perform a linear regression between two variables and outputs a plot of the results.
+
+```{r}
+## Let's say that we have one vector of all of our favourite numbers
+fav <- c(1,5,7,9,19)
+## And one of all of our least favourite numbers
+unfav <- c(3,6,8,2,4)
+## we can use regress() to plot fav as a function of unfav
+regress(fav, unfav, TRUE)
+## The lack of relationship is overwhelming!
+```
+But what if we wanted the difference between the numbers instead? Fear not - diff() is here!
+
+```{r}
+## Let's calculate the difference between vectors!
+diff(fav,unfav)
+```
+
+

@@ -3,7 +3,7 @@
 #' That's it -- these functions just square, cube, or take the
 #' reciprocal/inverse of a vector.
 #'
-#' @param x The vector to be squared or cubed.
+#' @param x The vector to be squared or cubed or reciprical-ed.
 #' @param plot_it Display a plot of \code{x} vs the output? Use logical.
 #' \code{FALSE} by default.
 #'
@@ -25,13 +25,25 @@
 #' reciprocal(2)
 #' @rdname square
 #' @export
-square <- function(x, plot_it=FALSE) pow(x, a=2, plot_it=plot_it)
+square <- function(x, plot_it=FALSE) {
+  if (!is.numeric(x))
+    stop("x should be numeric.")
+  pow(x, a=2, plot_it=plot_it)
+}
 
 #' @rdname square
 #' @export
-cube <- function(x, plot_it=FALSE) pow(x, a=3, plot_it=plot_it)
+cube <- function(x, plot_it=FALSE) {
+  if (!is.numeric(x))
+    stop("x should be numeric.")
+  (pow(x, a=3, plot_it=plot_it))
+}
 
 
 #' @rdname square
 #' @export
-reciprocal <- function(x, plot_it=FALSE) pow(x, a=-1, plot_it=plot_it)
+reciprocal <- function(x, plot_it=FALSE) {
+  if (!is.numeric(x))
+    stop("x should be numeric.")
+  pow(x, a=-1, plot_it=plot_it)
+}

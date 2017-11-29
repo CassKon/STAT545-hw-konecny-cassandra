@@ -13,7 +13,7 @@ cube(x, plot_it = FALSE)
 reciprocal(x, plot_it = FALSE)
 }
 \arguments{
-\item{x}{The vector to be squared or cubed.}
+\item{x}{The vector to be squared or cubed or reciprical-ed.}
 
 \item{plot_it}{Display a plot of \code{x} vs the output? Use logical.
 \code{FALSE} by default.}
