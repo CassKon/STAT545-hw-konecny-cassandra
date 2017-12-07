@@ -1,0 +1,102 @@
+---
+title: "Data from the Web"
+author: "Cassandra"
+date: '2017-12-07'
+output: github_document
+---
+
+# Load Required Packages
+
+```{r message=FALSE}
+library(RCurl)
+library(RJSONIO)
+library(plyr)
+library(jsonlite)
+library(knitr)
+```
+
+# Create a series of functions for use in queries
+
+
+```{r}
+
+##### GEOCODE ADDRESSES ####
+
+# This function assembles the components used in the geocoding query
+url <- function(address, return.call = "json") {
+  root <- "http://maps.google.com/maps/api/geocode/"
+  u <- paste(root, return.call, "?address=", address, sep = "")
+  return(URLencode(u))
+}
+
+# This accepts the addresses as input, uses the url function to query the addresses and then returns the revelvant data.
+geoCode <- function(address,verbose=FALSE) {
+  if(verbose) cat(address,"\n")
+  u <- url(address)
+  doc <- getURL(u)
+  x <- fromJSON(doc,simplifyVector = FALSE)
+  if(x$status=="OK") {
+    lat <- (x$results[[1]]$geometry$location$lat)
+    lng <- (x$results[[1]]$geometry$location$lng)
+    location_type  <- x$results[[1]]$geometry$location_type
+    formatted_address  <- x$results[[1]]$formatted_address
+    return(c(lat, lng, location_type, formatted_address))
+    Sys.sleep(0.5)
+  } else {
+    return(c(NA,NA,NA, NA))
+  }
+}
+
+##### ROUTE PLANNING ####
+
+# This function is used to format the stops along the route for use in the directions_url function
+stop <- function (lat, lon) {
+    location <- paste("via:", (paste(lat, lon, sep=",")),"%7C", sep ="")
+    return(location)
+}
+
+# This function performs a query using the locations dataframe to create a route betweeen them in order of entry
+directions_url <- function(df, return.call = "json", mode = "driving") {
+  root <- "https://maps.google.com/maps/api/directions/"
+  origin <- paste(df[1,1], df[1,2], sep=",")
+  destination <- paste(df[nrow(df)-1,1], df[nrow(df)-1,2], sep=",")
+  waypoints <- ""
+    for(i in 2:(nrow(locations)-1)) 
+    {
+    waypoints <- paste(waypoints,(stop(df[i,1], df[i,2])), sep="")
+    }
+  u <- paste(root, return.call, "?origin=", origin, "&destination=",
+             destination,"&waypoints=",waypoints,"&mode=",mode, "&key=AIzaSyCLb3SFJnb5L6BkBR93cUJ4-5ocico9yNo", sep = "")
+  return(URLencode(u))
+}
+
+```
+
+# Code to execute queries
+
+```{r}
+# These are the addresses inputted by the user
+address <- c("The University of British Columbia, BC","Whytecliff Park, BC", "Porteau Cove ,BC")
+
+# This formats the geocoding output
+locations  <- ldply(address, function(x) geoCode(x))
+names(locations)  <- c("lat","lon","location_type", "formatted")
+
+# This executes the directions query and returns directions in a table
+response<-fromJSON(txt =directions_url(df=locations))
+cleanFun <- function(htmlString) {
+  return(gsub("<.*?>", "", htmlString))
+}
+directions_url(df=locations)
+Directions <- data.frame(response$routes$legs[[1]][["steps"]][[1]][["distance"]]["text"],
+                            response$routes$legs[[1]][["steps"]][[1]][["duration"]]["text"],
+                            cleanFun(response$routes$legs[[1]][["steps"]][[1]][["html_instructions"]]))
+colnames(Directions) <- c("Distance", "Duration", "Maneuver")
+```
+
+# Directions
+
+```{r}
+# Final directions between location
+kable(Directions)
+```
