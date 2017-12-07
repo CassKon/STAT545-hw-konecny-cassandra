@@ -8,7 +8,7 @@ The homework assignment can be found here:
 
 My completed assignment can be found here: 
   
-  [**Cassandra Konecny hw10**]()
+  [**Cassandra Konecny hw10**](https://github.com/CassKon/STAT545-hw-konecny-cassandra/blob/a5d4f0bb1b57698e0a21ba634c295908877df778/hw-10/hw-10.md)
 
 
 # Reporting
